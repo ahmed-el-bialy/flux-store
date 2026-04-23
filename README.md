@@ -21,7 +21,8 @@
 
 ### 🎬 Watch the App in Action
 
-**[🔗 Watch on YouTube Shorts](https://youtube.com/shorts/PIg1rYA0CkQ)** 
+**[🔗 Watch on YouTube Shorts](https://youtube.com/shorts/PIg1rYA0CkQ)**
+
 *A complete walkthrough of Flux Store demonstrating all core features and functionality*
 
 </div>
