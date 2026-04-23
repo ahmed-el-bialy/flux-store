@@ -1,35 +1,38 @@
-# 🛍️ Flux Store - Advanced E-commerce Flutter App
+# 🛍️ Flux Store - E-Commerce Mobile Application
 
-A professional Flutter application built with a focus on **Clean Architecture**, **Robust Networking**, and **Scalable Code Structure**.
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
+  <img src="https://img.shields.io/badge/OS-Ubuntu%2024.04-E9430F?style=for-the-badge&logo=ubuntu&logoColor=white" alt="Ubuntu">
+</p>
 
-## 🛠️ Technical Highlights (What's under the hood?)
+<p align="center">
+  <video src="screenshots/Overview.mp4" width="280" muted autoplay loop>
+  </video>
+</p>
 
-This project isn't just about UI; it demonstrates advanced development patterns:
+## 📌 Project Overview
+**Flux Store** is a high-performance E-commerce mobile solution built with Flutter. It focuses on delivering a premium shopping experience through a minimalist UI, robust state management, and seamless API integration.
 
-* **Modular Architecture:** Organized into `Models`, `Services`, `Views`, and `Widgets` for high maintainability.
-* **Custom API Helper:** Built a reusable `API` helper class to handle HTTP methods (GET, POST, etc.) globally.
-* **Advanced Networking with Dio:** * Implemented efficient data fetching using the **Dio** package.
-    * Dynamic endpoint management for categories and products.
-* **Data Modeling:** Used custom Factory Constructors (`fromJson`) for complex JSON parsing and type-safety.
-* **Asynchronous UI:** Utilized `FutureBuilder` for seamless state handling during data fetching.
+## 🚀 Key Features
+* **Modern UI/UX:** Clean, intuitive, and user-friendly interface.
+* **Smart Catalog:** Browse products via organized categories with smooth transitions.
+* **Search Optimization:** Fast and efficient product search functionality.
+* **Responsive Layout:** Fully optimized for both Android and iOS devices.
 
-## ✨ Functional Features
-* **Dynamic Home View:** Real-time product feed from remote servers.
-* **Smart Category Search:** Filterable product catalog using dedicated category services.
-* **Rich Product Details:** Complete product overview including ratings and user reviews.
-* **Interactive UI:** Integrated `FontAwesome` icons and custom-built widgets for a premium feel.
-
-## 🚀 Tech Stack
-* **Frontend:** Flutter & Dart
-* **API Management:** Dio
-* **Architecture:** Clean Architecture (Services-based)
-* **Icons:** Font Awesome Flutter
-* **State Management:** Optimized using Flutter's native state handling with Service-view separation.
+## 🛠️ Technical Stack
+* **Framework:** Flutter (Stable Channel)
+* **Language:** Dart
+* **Architecture:** MVVM / Clean Architecture *(Update if needed)*
+* **Key Packages:** Dio (Networking), Provider/Bloc (State Management), Google Fonts.
 
 ## 📸 Screenshots
-*(Add your screenshots folder here to show off the UI)*
+<p align="center">
+  <img src="screenshots/HomeView.png" width="250" alt="Home Screen">
+  <img src="screenshots/Categoryprducots.png" width="250" alt="Category Screen">
+</p>
 
-## 📦 Installation & Setup
-1. Clone the repo: `git clone https://github.com/ahmed-el-bialy/flux-store.git`
-2. Install packages: `flutter pub get`
-3. Run: `flutter run`
+## ⚙️ Installation & Setup
+1. **Clone the repo:**
+   ```bash
+   git clone [https://github.com/ahmed-el-bialy/flux-store.git](https://github.com/ahmed-el-bialy/flux-store.git)
