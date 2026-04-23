@@ -1,17 +1,15 @@
-# flux_store
+# 🛍️ Flux Store - E-commerce App
 
-A new Flutter project.
+**Flux Store** is a modern mobile shopping application built with **Flutter**. The app provides a seamless browsing experience, allowing users to discover products across various categories with a clean UI.
 
-## Getting Started
+## ✨ Features
+* **Dynamic Product Listing:** Fetches real-time products from a remote API.
+* **Category Filtering:** Browse products based on specific categories.
+* **Detailed Product Views:** View ratings, reviews, and detailed info.
+* **Networking:** Efficient API handling using **Dio**.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Tech Stack
+* **Framework:** Flutter
+* **Language:** Dart
+* **Networking:** Dio
+* **Icons:** Font Awesome Flutter
