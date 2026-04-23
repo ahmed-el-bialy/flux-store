@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # 🛍️ Flux Store - Premium E-Commerce Mobile Application
 
 <div align="center">
@@ -94,11 +95,68 @@
 | **API** | DummyJSON | Real Product Data |
 
 </div>
+=======
+# Flux Store 🛍️
+
+A professional, high-performance E-commerce mobile application developed with **Flutter**. The application demonstrates advanced API integration, dynamic data handling, and a clean user interface designed for a seamless shopping experience.
+
+---
+
+## 🚀 Key Features
+
+* **Global Product Discovery**: Real-time fetching of products from a centralized REST API using optimized service layers.
+* **Smart Category System**: Browse products by categories with dynamic filtering logic.
+* **Advanced Search Functionality**: Search for specific categories and items with instant feedback and validation.
+* **Interactive UI/UX**: Features custom-built components like dynamic category chips, smooth transitions, and a personalized `ServicesBar`.
+* **In-depth Product Analytics**: View comprehensive product details including descriptions, pricing, real-time stock levels, and star ratings.
+* **Social Proof Integration**: A dedicated reviews system to display user feedback and ratings for each product.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+* **Framework**: [Flutter](https://flutter.dev) (Dart)
+* **Networking**: Robust REST API integration using a custom `Api` helper class for handled HTTP requests.
+* **Architecture**: Follows a clean separation of concerns (SOC):
+    * **Services**: Decoupled logic for data fetching (`AllProductsServices`, `CategoryListServices`, etc.).
+    * **Models**: Strongly-typed data models for products and categories.
+    * **Views**: Modular UI screens (`MainView`, `ProductView`, `CategorySearch`).
+    * **Widgets**: Reusable components (`CustomTextField`, `CategoriesListBuilder`, `DetailsProductPart`).
+* **State Management**: Optimized performance using reactive UI updates.
+
+---
+
+## 📸 App Preview
+
+| Home Screen | Product Details | Search & Categories |
+| :---: | :---: | :---: |
+| ![HomeView](./screenshots/HomeView.png) | ![ProductDetailsView](./screenshots/ProductDetailsView.png) | ![SearchView](./screenshots/SearchView.png) |
+
+---
+
+## ⚙️ Installation & Setup
+
+Ensure you have the Flutter SDK installed on your machine.
+
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/ahmed-elbialy/flux_store.git](https://github.com/ahmed-elbialy/flux_store.git)
+    ```
+2.  **Install dependencies**:
+    ```bash
+    flutter pub get
+    ```
+3.  **Run the application**:
+    ```bash
+    flutter run
+    ```
+>>>>>>> Stashed changes
 
 ---
 
 ## 📁 Project Structure
 
+<<<<<<< Updated upstream
 ```
 lib/
 ├── main.dart                          # App entry point
@@ -450,3 +508,24 @@ If you found this project helpful, please consider:
 [![Forks](https://img.shields.io/github/forks/ahmed-el-bialy/flux-store?style=social)](https://github.com/ahmed-el-bialy/flux-store/fork)
 
 </div>
+=======
+```text
+lib/
+├── Constants/    # Global themes and app constants
+├── Models/       # JSON-to-Dart data models
+├── Services/     # API interaction and logic layer
+├── Views/        # UI screens and navigation
+├── Widgets/      # Reusable and modular UI elements
+└── helper/       # Networking and utility helpers
+
+👨‍💻 Contact & Professional Profile
+Ahmed El-Bialy AI Student & Flutter Mobile Developer
+
+LinkedIn: linkedin.com/in/ahmedel-bialy
+
+Email: ah.elbialy.dev@gmail.com
+
+Phone: +201022121573
+
+Built with passion and a commitment to clean code standards.
+>>>>>>> Stashed changes
