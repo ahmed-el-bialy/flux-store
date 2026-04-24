@@ -14,11 +14,19 @@
 </div>
 
 ---
-## 🎬 App Demo
 
-[![Watch the Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/shorts/PIg1rYA0CkQ)
+## 📱 Demo Video
 
-> **Note:** Click the button above to watch the full walkthrough on YouTube.
+<div align="center">
+
+### 🎬 Watch the App in Action
+
+**[🔗 Watch on YouTube Shorts](https://youtube.com/shorts/PIg1rYA0CkQ)**
+
+*A complete walkthrough of Flux Store demonstrating all core features and functionality*
+
+</div>
+
 ---
 
 ## 🎯 Overview
@@ -96,53 +104,53 @@
 
 ```
 lib/
-├── main.dart                              # Application entry point
+├── main.dart                              # Application entry point
 │
-├── Views/                                 # 🎬 UI Screens
-│   ├── Main_View.dart                    # Home screen — product grid
-│   ├── Category_Search.dart              # Category selection & search
-│   ├── Category_Products.dart            # Products filtered by category
-│   └── Product_View.dart                 # Detailed product info
+├── Views/                                 # 🎬 UI Screens
+│   ├── Main_View.dart                    # Home screen — product grid
+│   ├── Category_Search.dart              # Category selection & search
+│   ├── Category_Products.dart            # Products filtered by category
+│   └── Product_View.dart                 # Detailed product info
 │
-├── Models/                                # 📊 Data Models
-│   ├── Product_Model.dart                # Product + Reviews parsing
-│   └── Category_Model.dart               # Category data structure
+├── Models/                                # 📊 Data Models
+│   ├── Product_Model.dart                # Product + Reviews parsing
+│   └── Category_Model.dart               # Category data structure
 │
-├── Services/                              # 🔌 API Service Layer
-│   ├── All_Product_Services.dart         # GET /products
-│   ├── Category_List_Services.dart         # GET /products/categories
-│   └── Category_Products_Services.dart   # GET /products/category/{name}
+├── Services/                              # 🔌 API Service Layer
+│   ├── All_Product_Services.dart         # GET /products
+│   ├── Category_List_Services.dart         # GET /products/categories
+│   └── Category_Products_Services.dart   # GET /products/category/{name}
 │
-├── Widgets/                               # 🧩 Reusable UI Components
-│   ├── Product_Card_Widget.dart          # Individual product card
-│   ├── Products_List_Builder.dart        # FutureBuilder grid
-│   ├── CategoriesListBuilder.dart        # Category chips list
-│   ├── MainProductPart.dart              # Product image & info
-│   ├── DetilsProductPart.dart            # Price & description
-│   ├── Reviews_List_Builder.dart         # Reviews list
-│   ├── Custom_Text_Field.dart            # Search input
-│   └── ServicesBar.dart                  # Bottom navigation bar
+├── Widgets/                               # 🧩 Reusable UI Components
+│   ├── Product_Card_Widget.dart          # Individual product card
+│   ├── Products_List_Builder.dart        # FutureBuilder grid
+│   ├── CategoriesListBuilder.dart        # Category chips list
+│   ├── MainProductPart.dart              # Product image & info
+│   ├── DetilsProductPart.dart            # Price & description
+│   ├── Reviews_List_Builder.dart         # Reviews list
+│   ├── Custom_Text_Field.dart            # Search input
+│   └── ServicesBar.dart                  # Bottom navigation bar
 │
-├── Constants/                             # ⚙️ App Configuration
-│   └── Constants.dart                    # API URL, theme color
+├── Constants/                             # ⚙️ App Configuration
+│   └── Constants.dart                    # API URL, theme color
 │
-└── helper/                                # 🔧 Utilities
-    ├── API.dart                          # Dio HTTP wrapper
-    └── Data_Formater.dart                # Date formatting (intl)
+└── helper/                                # 🔧 Utilities
+    ├── API.dart                          # Dio HTTP wrapper
+    └── Data_Formater.dart                # Date formatting (intl)
 ```
 
 ### 🔄 Data Flow
 
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Views     │────▶│  Services   │────▶│   Helper    │────▶│  DummyJSON  │
-│  (Widgets)  │◀────│  (API Call) │◀────│   (Dio)     │◀────│    API      │
-└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
-      │
-      ▼
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Views     │────▶│  Services   │────▶│   Helper    │────▶│  DummyJSON  │
+│  (Widgets)  │◀────│  (API Call) │◀────│   (Dio)     │◀────│    API      │
+└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
+      │
+      ▼
 ┌─────────────┐
-│   Models    │
-│ (fromJson)  │
+│   Models    │
+│ (fromJson)  │
 └─────────────┘
 ```
 
@@ -172,20 +180,20 @@ Navigator.pushNamed(context, ProductView.id, arguments: productModel);
 **Example Response:**
 ```json
 {
-  "id": 1,
-  "title": "iPhone 9",
-  "price": 549,
-  "rating": 4.3,
-  "stock": 94,
-  "thumbnail": "https://cdn.dummyjson.com/...",
-  "reviews": [
-    {
-      "rating": 5,
-      "comment": "Excellent product!",
-      "date": "2024-04-15",
-      "reviewerName": "Ahmed El-Bialy"
-    }
-  ]
+  "id": 1,
+  "title": "iPhone 9",
+  "price": 549,
+  "rating": 4.3,
+  "stock": 94,
+  "thumbnail": "https://cdn.dummyjson.com/...",
+  "reviews": [
+    {
+      "rating": 5,
+      "comment": "Excellent product!",
+      "date": "2024-04-15",
+      "reviewerName": "Ahmed El-Bialy"
+    }
+  ]
 }
 ```
 
@@ -196,34 +204,34 @@ Navigator.pushNamed(context, ProductView.id, arguments: productModel);
 ### ProductModel
 ```dart
 class ProductModel {
-  final String image;           // Product thumbnail URL
-  final String title;           // Product name
-  final dynamic price;          // Price (raw from API)
-  final double rate;            // Average rating (0-5)
-  final int stock;              // Available quantity
-  final String description;     // Product details
-  final List<ReviewsModel> reviews;  // Customer reviews
-  bool isFav = false;           // Local favorite state (non-persisted)
+  final String image;           // Product thumbnail URL
+  final String title;           // Product name
+  final dynamic price;          // Price (raw from API)
+  final double rate;            // Average rating (0-5)
+  final int stock;              // Available quantity
+  final String description;     // Product details
+  final List<ReviewsModel> reviews;  // Customer reviews
+  bool isFav = false;           // Local favorite state (non-persisted)
 }
 ```
 
 ### ReviewsModel
 ```dart
 class ReviewsModel {
-  final int rating;             // Individual rating (1-5)
-  final String comment;         // Review text
-  final String date;            // ISO 8601 date string
-  final String reviewerName;    // Customer name
+  final int rating;             // Individual rating (1-5)
+  final String comment;         // Review text
+  final String date;            // ISO 8601 date string
+  final String reviewerName;    // Customer name
 }
 ```
 
 **Defensive Parsing:**
 ```dart
 factory ReviewsModel.fromJson(jsonData) => ReviewsModel(
-  rating: jsonData["rating"] ?? 0,
-  comment: jsonData["comment"] ?? "No comment provided",
-  date: jsonData["date"] ?? "Unknown date",
-  reviewerName: jsonData["reviewerName"] ?? "Anonymous",
+  rating: jsonData["rating"] ?? 0,
+  comment: jsonData["comment"] ?? "No comment provided",
+  date: jsonData["date"] ?? "Unknown date",
+  reviewerName: jsonData["reviewerName"] ?? "Anonymous",
 );
 ```
 
@@ -233,11 +241,11 @@ factory ReviewsModel.fromJson(jsonData) => ReviewsModel(
 
 ```yaml
 dependencies:
-  flutter:
-    sdk: flutter
-  dio: ^5.x.x              # HTTP client with interceptors
-  intl: ^0.x.x             # Date formatting
-  font_awesome_flutter: ^10.x.x  # Icon library
+  flutter:
+    sdk: flutter
+  dio: ^5.x.x              # HTTP client with interceptors
+  intl: ^0.x.x             # Date formatting
+  font_awesome_flutter: ^10.x.x  # Icon library
 ```
 
 ```bash
@@ -271,9 +279,9 @@ flutter pub get
 flutter run
 
 # Build for production
-flutter build apk --release      # Android APK
+flutter build apk --release      # Android APK
 flutter build appbundle --release # Android AAB
-flutter build ios --release       # iOS
+flutter build ios --release       # iOS
 ```
 
 ---
@@ -339,7 +347,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 ## 👤 Author
 
-**Ahmed El-Bialy**  
+**Ahmed El-Bialy**  
 *Flutter Developer | Mobile App Specialist*
 
 <div align="center">
@@ -351,7 +359,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 </div>
 
-📧 **Email:** ah.elbialy.dev@gmail.com  
+📧 **Email:** ah.elbialy.dev@gmail.com  
 📞 **Phone:** +20 102 212 1573
 
 ---
