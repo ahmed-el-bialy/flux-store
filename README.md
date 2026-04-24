@@ -19,14 +19,10 @@
 
 <div align="center">
 
-### 🎬 Watch the App in Action
+[![Watch the demo](https://img.youtube.com/vi/PIg1rYA0CkQ/0.jpg)](https://youtube.com/shorts/PIg1rYA0CkQ)
 
-**[🔗 Watch on YouTube Shorts](https://youtube.com/shorts/PIg1rYA0CkQ)**
-
-*A complete walkthrough of Flux Store demonstrating all core features and functionality*
-
+**[🔗 Click here to watch the full demo on YouTube Shorts]**
 </div>
-
 ---
 
 ## 🎯 Overview
