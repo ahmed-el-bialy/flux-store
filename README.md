@@ -14,15 +14,11 @@
 </div>
 
 ---
+## 🎬 App Demo
 
-## 📱 Demo Video
+[![Watch the Demo](https://img.shields.io/badge/YouTube-Watch%20Demo-red?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/shorts/PIg1rYA0CkQ)
 
-<div align="center">
-
-[![Watch the demo](https://img.youtube.com/vi/PIg1rYA0CkQ/0.jpg)](https://youtube.com/shorts/PIg1rYA0CkQ)
-
-**[🔗 Click here to watch the full demo on YouTube Shorts]**
-</div>
+> **Note:** Click the button above to watch the full walkthrough on YouTube.
 ---
 
 ## 🎯 Overview
