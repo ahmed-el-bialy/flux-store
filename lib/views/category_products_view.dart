@@ -4,17 +4,17 @@ import 'package:flux_store/widgets/products_list_builder.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 import '../core/constants/constants.dart';
 
-class CategoryProducts extends StatefulWidget {
-  const CategoryProducts({super.key, required this.name});
+class CategoryProductsView extends StatefulWidget {
+  const CategoryProductsView({super.key, required this.name});
 
   final String name;
   static String id = "Category Products View";
 
   @override
-  State<CategoryProducts> createState() => _CategoryProductsState();
+  State<CategoryProductsView> createState() => _CategoryProductsViewState();
 }
 
-class _CategoryProductsState extends State<CategoryProducts> {
+class _CategoryProductsViewState extends State<CategoryProductsView> {
   var future;
 
   @override

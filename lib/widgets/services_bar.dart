@@ -26,7 +26,7 @@ class ServicesBar extends StatelessWidget {
                   (route) => false,
                 );
               },
-              icon: Icon(Icons.home, size: 35.sp, color: Colors.white),
+              icon: Icon(Icons.home, size: 28.sp, color: Colors.white),
             ),
           ),
           Padding(
@@ -42,21 +42,21 @@ class ServicesBar extends StatelessWidget {
                   ),
                 );
               },
-              icon: Icon(Icons.search, size: 35.sp, color: Colors.white),
+              icon: Icon(Icons.search, size: 28.sp, color: Colors.white),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.shopping_cart, size: 30.sp, color: Colors.white),
+              icon: Icon(Icons.shopping_cart, size: 28.sp, color: Colors.white),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Icons.favorite, size: 30.sp, color: Colors.white),
+              icon: Icon(Icons.favorite, size: 28.sp, color: Colors.white),
             ),
           ),
           Padding(
@@ -65,7 +65,7 @@ class ServicesBar extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.person_rounded,
-                size: 35.sp,
+                size: 28.sp,
                 color: Colors.white,
               ),
             ),

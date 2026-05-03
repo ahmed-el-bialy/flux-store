@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return CategoryProducts(name: value);
+                  return CategoryProductsView(name: value);
                 },
               ),
             );
