@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
-import '../Models/Product_Model.dart';
-import '../Services/All_Product_Services.dart';
-import 'Product_Card_Widget.dart';
-import 'Products_List_Builder.dart';
+import '../services/all_product_services.dart';
+import 'products_list_builder.dart';
 
 class ProductsList extends StatefulWidget {
-  ProductsList({super.key});
+  const ProductsList({super.key});
 
   @override
   State<ProductsList> createState() => _ProductsListState();

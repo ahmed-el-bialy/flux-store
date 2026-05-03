@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Models/Category_Model.dart';
-import '../Views/Category_Products.dart';
+import '../models/category_Model.dart';
+import '../views/category_products_view.dart';
 
 class CategoriesListBuilder extends StatelessWidget {
   const CategoriesListBuilder({super.key, required this.categoryList});
@@ -31,7 +32,7 @@ class CategoriesListBuilder extends StatelessWidget {
                   category.name,
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
+                    fontSize: 13.sp,
                   ),
                 ),
                 backgroundColor: Colors.grey[100],
@@ -46,5 +47,5 @@ class CategoriesListBuilder extends StatelessWidget {
         ),
       ),
     );
-    }
+  }
 }

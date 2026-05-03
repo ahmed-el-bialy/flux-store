@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Models/Category_Model.dart';
-import 'package:flux_store/Services/Category_List_Services.dart';
-
-import '../Constants/Constants.dart';
-import '../Widgets/CategoriesListBuilder.dart';
-import '../Widgets/Custom_Text_Field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/models/category_Model.dart';
+import 'package:flux_store/services/category_list_services.dart';
+import 'package:flux_store/widgets/services_bar.dart';
+import '../widgets/categories_list_builder.dart';
+import '../widgets/custom_text_field.dart';
+import '../core/constants/constants.dart';
 
 class CategorySearch extends StatefulWidget {
   const CategorySearch({super.key});
@@ -43,24 +44,34 @@ class _CategorySearchState extends State<CategorySearch> {
         elevation: 5,
         backgroundColor: Color(kMainColor),
       ),
-      body: SingleChildScrollView(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
             FutureBuilder<List<CategoryModel>>(
               future: future,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * .7,
+                    child: ListView(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: CustomTextField(categoryList: snapshot.data!),
+                        ),
+                        CategoriesListBuilder(categoryList: snapshot.data!),
+                      ],
+                    ),
+                  );
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
                   return Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: CustomTextField(categoryList: snapshot.data!),
-                      ),
-                      CategoriesListBuilder(categoryList: snapshot.data!),
+                      SizedBox(height: 40.h),
+                      Center(child: CircularProgressIndicator()),
                     ],
                   );
-                } else if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
                 } else {
@@ -68,6 +79,8 @@ class _CategorySearchState extends State<CategorySearch> {
                 }
               },
             ),
+            Spacer(flex: 1),
+            ServicesBar(),
           ],
         ),
       ),

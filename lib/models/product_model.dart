@@ -51,10 +51,10 @@ class ReviewsModel {
 
   factory ReviewsModel.fromJson(jsonData) {
     return ReviewsModel(
-      rating: jsonData["rating"]?? "?",
-      comment: jsonData["comment"]??"not Found",
-      date: jsonData["date"]??"?",
-      reviewerName: jsonData["reviewerName"]??"unknown",
+      rating: jsonData["rating"] ?? "?",
+      comment: jsonData["comment"] ?? "not Found",
+      date: jsonData["date"] ?? "?",
+      reviewerName: jsonData["reviewerName"] ?? "unknown",
     );
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Models/Product_Model.dart';
+import '../models/product_model.dart';
 
-class DetailsProductPart extends StatelessWidget {
-  const DetailsProductPart({super.key, required this.model});
+class MoreProductDetails extends StatelessWidget {
+  const MoreProductDetails({super.key, required this.model});
 
   final ProductModel model;
 
@@ -18,7 +19,7 @@ class DetailsProductPart extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Center(
-                child: Text("Details:", style: TextStyle(fontSize: 30)),
+                child: Text("Details:", style: TextStyle(fontSize: 26.sp)),
               ),
             ),
             Padding(
@@ -26,7 +27,7 @@ class DetailsProductPart extends StatelessWidget {
               child: Text(
                 model.description,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16.sp,
                   color: Colors.grey,
                   fontWeight: FontWeight.bold,
                 ),
@@ -43,7 +44,7 @@ class DetailsProductPart extends StatelessWidget {
                   ),
                   child: Text(
                     "rating :  ${model.rate}⭐",
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 17.sp),
                   ),
                 ),
                 Padding(
@@ -53,7 +54,7 @@ class DetailsProductPart extends StatelessWidget {
                   ),
                   child: Text(
                     "Stock :  ${model.stock} pieces",
-                    style: TextStyle(fontSize: 19),
+                    style: TextStyle(fontSize: 17.sp),
                   ),
                 ),
               ],

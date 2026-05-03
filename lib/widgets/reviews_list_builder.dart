@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Models/Product_Model.dart';
-import 'Review_Card_Widget.dart';
+import 'package:flux_store/models/product_model.dart';
+import 'review_card_widget.dart';
 
 class ReviewsListBuilder extends StatelessWidget {
   const ReviewsListBuilder({super.key, required this.reviews});
 
   final List<ReviewsModel> reviews;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,7 +15,7 @@ class ReviewsListBuilder extends StatelessWidget {
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemCount: reviews.length,
-        itemBuilder: ( context,  index) {
+        itemBuilder: (context, index) {
           return ReviewCardWidget(reviews: reviews[index]);
         },
       ),

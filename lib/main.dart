@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Views/Category_Products.dart';
-import 'package:flux_store/Views/Category_Search.dart';
-import 'package:flux_store/Views/Main_View.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/views/category_products_view.dart';
+import 'package:flux_store/views/category_search_view.dart';
+import 'package:flux_store/views/main_view.dart';
 
 void main() {
   runApp(FluxStore());
@@ -12,12 +13,17 @@ class FluxStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        CategorySearch.id : (context )=> CategorySearch(),
-        MainView.id : (context) => MainView(),
-      },
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      child: MaterialApp(
+        routes: {
+          CategorySearch.id: (context) => CategorySearch(),
+          MainView.id: (context) => MainView(),
+        },
         initialRoute: MainView.id,
-        debugShowCheckedModeBanner: false, home: MainView());
+        debugShowCheckedModeBanner: false,
+        home: MainView(),
+      ),
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Models/Category_Model.dart';
-import 'package:flux_store/Views/Category_Products.dart';
+import 'package:flux_store/models/category_Model.dart';
+import 'package:flux_store/views/category_products_view.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({super.key, required this.categoryList});

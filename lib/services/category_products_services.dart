@@ -1,6 +1,6 @@
-import '../Constants/Constants.dart';
-import '../Models/Product_Model.dart';
-import '../helper/API.dart';
+import '../models/product_model.dart';
+import '../core/constants/constants.dart';
+import '../core/helper/API.dart';
 
 class CategoryProductsServices {
   Future<List<ProductModel>> getCategoriesProducts({

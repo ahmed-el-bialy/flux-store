@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../Models/Product_Model.dart';
-import 'Product_Card_Widget.dart';
+import '../models/product_model.dart';
+import 'product_card_widget.dart';
 
 class ProductListBuilder extends StatelessWidget {
   const ProductListBuilder({super.key, required this.future});
@@ -40,12 +40,13 @@ class ProductListBuilder extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment:  CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: Icon(
-                      Icons.signal_wifi_statusbar_connected_no_internet_4_rounded,
+                      Icons
+                          .signal_wifi_statusbar_connected_no_internet_4_rounded,
                       color: Colors.black,
                       size: 50,
                     ),
@@ -53,7 +54,7 @@ class ProductListBuilder extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                       " Please check your Wi-Fi Connection and click double click on home icon  ",
+                      " Please check your Wi-Fi Connection and click double click on home icon  ",
                       style: TextStyle(fontSize: 25),
                     ),
                   ),

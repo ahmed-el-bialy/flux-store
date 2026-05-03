@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../Models/Product_Model.dart';
+import '../models/product_model.dart';
 
-class MainProductPart extends StatefulWidget {
-  const MainProductPart({super.key, required this.model});
+class MainProductDetails extends StatefulWidget {
+  const MainProductDetails({super.key, required this.model});
 
   final ProductModel model;
 
   @override
-  State<MainProductPart> createState() => _MainProductPartState();
+  State<MainProductDetails> createState() => _MainProductDetailsState();
 }
 
-class _MainProductPartState extends State<MainProductPart> {
+class _MainProductDetailsState extends State<MainProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,7 +36,7 @@ class _MainProductPartState extends State<MainProductPart> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Text(
                 widget.model.title,
-                style: TextStyle(fontSize: 28, color: Colors.black),
+                style: TextStyle(fontSize: 24.sp, color: Colors.black),
               ),
             ),
             Padding(
@@ -45,7 +46,7 @@ class _MainProductPartState extends State<MainProductPart> {
                 children: [
                   Text(
                     "price : ${widget.model.price} \$",
-                    style: TextStyle(fontSize: 28, color: Colors.black),
+                    style: TextStyle(fontSize: 22.sp, color: Colors.black),
                   ),
                   IconButton(
                     onPressed: () {
@@ -55,8 +56,12 @@ class _MainProductPartState extends State<MainProductPart> {
                       widget.model.isFav = !widget.model.isFav;
                     },
                     icon: widget.model.isFav == false
-                        ? Icon(Icons.favorite, color: Colors.grey[400], size: 32)
-                        : Icon(Icons.favorite, color: Colors.red, size: 32),
+                        ? Icon(
+                            Icons.favorite,
+                            color: Colors.grey[400],
+                            size: 22.sp,
+                          )
+                        : Icon(Icons.favorite, color: Colors.red, size: 22.sp),
                   ),
                 ],
               ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Constants/Constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../Widgets/Products_List.dart';
-import '../Widgets/ServicesBar.dart';
+import '../widgets/Products_List.dart';
+import '../widgets/services_bar.dart';
+import '../core/constants/constants.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});

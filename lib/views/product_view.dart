@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/Constants/Constants.dart';
-import 'package:flux_store/Models/Product_Model.dart';
-import 'package:flux_store/Widgets/ServicesBar.dart';
-
-import '../Widgets/DetilsProductPart.dart';
-import '../Widgets/MainProductPart.dart';
-import '../Widgets/Reviews_List_Builder.dart';
+import 'package:flux_store/models/product_model.dart';
+import 'package:flux_store/widgets/services_bar.dart';
+import '../widgets/more_product_details.dart';
+import '../widgets/main_product_details.dart';
+import '../widgets/reviews_list_builder.dart';
+import '../core/constants/constants.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key, required this.model});
+
   final ProductModel model;
 
   @override
@@ -18,7 +18,11 @@ class ProductView extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.white),
         automaticallyImplyLeading: true,
         automaticallyImplyActions: true,
-        title: Text(model.title, style: TextStyle(color: Colors.white),overflow: TextOverflow.ellipsis,),
+        title: Text(
+          model.title,
+          style: TextStyle(color: Colors.white),
+          overflow: TextOverflow.ellipsis,
+        ),
         centerTitle: true,
         backgroundColor: Color(kMainColor),
       ),
@@ -28,15 +32,15 @@ class ProductView extends StatelessWidget {
           Flexible(
             child: ListView(
               children: [
-                MainProductPart(model: model,),
+                MainProductDetails(model: model),
                 Center(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * .6,
                     child: Divider(thickness: 3, endIndent: 10, indent: 10),
                   ),
                 ),
-                DetailsProductPart(model: model,),
-                ReviewsListBuilder(reviews: model.reviews,),
+                MoreProductDetails(model: model),
+                ReviewsListBuilder(reviews: model.reviews),
               ],
             ),
           ),

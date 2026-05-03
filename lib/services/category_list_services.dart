@@ -1,6 +1,6 @@
-import 'package:flux_store/helper/API.dart';
-import '../Constants/Constants.dart';
-import '../Models/Category_Model.dart';
+import '../models/category_Model.dart';
+import '../core/constants/constants.dart';
+import '../core/helper/API.dart';
 
 class CategoryListServices {
   Future<List<CategoryModel>> getAllCategories() async {
