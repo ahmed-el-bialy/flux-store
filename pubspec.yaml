@@ -33,11 +33,16 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  cupertino_icons: ^1.0.9
+  # networking .
   dio: ^5.9.2
   font_awesome_flutter: ^11.0.0
-  intl: ^0.19.0
+  # Contains code to deal with internationalized/localized messages.
+  intl: ^0.20.2
+  # A flutter plugin for adapting screen and font size.Guaranteed to look good on different models.
   flutter_screenutil: ^5.9.3
+  # Flutter library to load and cache network images. Can also be used with placeholder and error widgets..
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:

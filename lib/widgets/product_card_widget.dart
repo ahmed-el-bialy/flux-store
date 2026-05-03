@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/models/product_model.dart';
@@ -52,9 +53,19 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                           width: MediaQuery.of(context).size.width * .5,
                           child: ClipRRect(
                             borderRadius: BorderRadiusGeometry.circular(10),
-                            child: Image.network(
-                              widget.model.image,
+                            child: CachedNetworkImage(
+                              imageUrl: widget.model.image,
                               fit: BoxFit.fill,
+                              placeholder: (context, url) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Center(child: Icon(Icons.error)),
+                              ),
                             ),
                           ),
                         ),
