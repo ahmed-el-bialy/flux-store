@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/services/category_products_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 import '../core/constants/constants.dart';
+import '../data/services/category_products_services.dart';
 
 class CategoryProductsView extends StatefulWidget {
   const CategoryProductsView({super.key, required this.name});

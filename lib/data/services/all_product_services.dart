@@ -1,6 +1,8 @@
-import 'package:flux_store/models/product_model.dart';
-import '../core/constants/constants.dart';
-import '../core/helper/api.dart';
+
+import '../../core/constants/constants.dart';
+import '../../core/helper/api.dart';
+
+import '../models/product_model.dart';
 
 class AllProductsServices {
   Future<List<ProductModel>> getAllProducts() async {

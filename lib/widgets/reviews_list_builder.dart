@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/models/product_model.dart';
+import '../data/models/product_model.dart';
 import 'review_card_widget.dart';
 
 class ReviewsListBuilder extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/all_product_services.dart';
+import '../data/services/all_product_services.dart';
 import 'products_list_builder.dart';
 
 class ProductsList extends StatefulWidget {

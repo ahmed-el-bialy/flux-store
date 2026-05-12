@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/models/product_model.dart';
 import 'package:flux_store/widgets/services_bar.dart';
+import '../data/models/product_model.dart';
 import '../widgets/more_product_details.dart';
 import '../widgets/main_product_details.dart';
 import '../widgets/reviews_list_builder.dart';

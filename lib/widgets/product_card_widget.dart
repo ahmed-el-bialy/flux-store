@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/models/product_model.dart';
 import 'package:flux_store/views/product_view.dart';
+
+import '../data/models/product_model.dart';
 
 class ProductCardWidget extends StatefulWidget {
   const ProductCardWidget({super.key, required this.model});
