@@ -43,6 +43,14 @@ dependencies:
   flutter_screenutil: ^5.9.3
   # Flutter library to load and cache network images. Can also be used with placeholder and error widgets..
   cached_network_image: ^3.4.1
+  # Automatically generate code for converting to and from JSON to annotation .
+  json_annotation: ^4.11.0
+  # Customize Flutter's default white native splash screen with background color and splash image.
+  flutter_native_splash: ^2.4.7
+  # A package which simplifies the task of updating your Flutter app's launcher icon.
+  flutter_launcher_icons: ^0.14.4
+  # Helps you to change or rename your flutter project BundleId and AppName for Ios, Android, macOS and Linux platforms
+  rename: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +62,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  json_serializable: ^6.13.2
+  build_runner: ^2.15.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../models/category_Model.dart';
+import '../models/category_model.dart';
 import '../views/category_products_view.dart';
 
 class CategoriesListBuilder extends StatelessWidget {

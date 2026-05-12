@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/product_model.dart';
-import '../core/helper/Data_Formater.dart';
+import '../core/helper/date_formater.dart';
 
 class ReviewCardWidget extends StatelessWidget {
   const ReviewCardWidget({super.key, required this.reviews});

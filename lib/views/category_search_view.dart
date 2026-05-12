@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/models/category_Model.dart';
+import 'package:flux_store/models/category_model.dart';
 import 'package:flux_store/services/category_list_services.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 import '../widgets/categories_list_builder.dart';

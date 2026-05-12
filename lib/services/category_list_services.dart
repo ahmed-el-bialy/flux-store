@@ -1,6 +1,6 @@
-import '../models/category_Model.dart';
+import '../models/category_model.dart';
 import '../core/constants/constants.dart';
-import '../core/helper/API.dart';
+import '../core/helper/api.dart';
 
 class CategoryListServices {
   Future<List<CategoryModel>> getAllCategories() async {

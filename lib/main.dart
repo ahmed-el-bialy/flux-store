@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/views/category_products_view.dart';
 import 'package:flux_store/views/category_search_view.dart';
 import 'package:flux_store/views/main_view.dart';
 
