@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/data/repo/repo.dart';
+import 'package:flux_store/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 import '../data/models/category_model.dart';
-import '../data/services/category_list_services.dart';
 import '../widgets/categories_list_builder.dart';
 import '../widgets/custom_text_field.dart';
 import '../core/constants/constants.dart';
@@ -17,18 +19,15 @@ class CategorySearch extends StatefulWidget {
 }
 
 class _CategorySearchState extends State<CategorySearch> {
-  var future;
+  late Future<List<CategoryModel>> future;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      getData();
-    });
-  }
-
-  void getData() {
-    future = CategoryListServices().getAllCategories();
+    Dio dio = Dio();
+    WebServices webServices = WebServices(dio);
+    Repo repo = Repo(webServices);
+    future = repo.getAllCategories();
   }
 
   @override
@@ -57,7 +56,7 @@ class _CategorySearchState extends State<CategorySearch> {
                     child: ListView(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          padding: EdgeInsets.symmetric(vertical: 10.0.h),
                           child: CustomTextField(categoryList: snapshot.data!),
                         ),
                         CategoriesListBuilder(categoryList: snapshot.data!),
@@ -69,7 +68,11 @@ class _CategorySearchState extends State<CategorySearch> {
                   return Column(
                     children: [
                       SizedBox(height: 40.h),
-                      Center(child: CircularProgressIndicator()),
+                      Center(
+                        child: CircularProgressIndicator(
+                          color: Color(kMainColor),
+                        ),
+                      ),
                     ],
                   );
                 } else if (snapshot.hasError) {

@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../core/constants/constants.dart';
 import '../data/models/product_model.dart';
 
 class MainProductDetails extends StatefulWidget {
@@ -28,7 +30,27 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                 elevation: 2,
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
-                  child: Image.network(widget.model.image),
+                  child: CachedNetworkImage(
+                    imageUrl: widget.model.image,
+                    placeholder: (context, url) =>
+                        CircularProgressIndicator(color: Color(kMainColor)),
+                    errorWidget: (context, url, error) => Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        child: Column(
+                          children: [
+                            SizedBox(height: 20.h),
+                            Icon(Icons.error, size: 30.sp),
+                            Text(
+                              "There was an error",
+                              style: TextStyle(fontSize: 20.sp),
+                            ),
+                            SizedBox(height: 20.h),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -48,21 +70,21 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                     "price : ${widget.model.price} \$",
                     style: TextStyle(fontSize: 22.sp, color: Colors.black),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      setState(() {
-                        widget.model.isFav;
-                      });
-                      widget.model.isFav = !widget.model.isFav;
-                    },
-                    icon: widget.model.isFav == false
-                        ? Icon(
-                            Icons.favorite,
-                            color: Colors.grey[400],
-                            size: 22.sp,
-                          )
-                        : Icon(Icons.favorite, color: Colors.red, size: 22.sp),
-                  ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     setState(() {
+                  //       widget.model.isFav;
+                  //     });
+                  //     widget.model.isFav = !widget.model.isFav;
+                  //   },
+                  //   icon: widget.model.isFav == false
+                  //       ? Icon(
+                  //           Icons.favorite,
+                  //           color: Colors.grey[400],
+                  //           size: 22.sp,
+                  //         )
+                  //       : Icon(Icons.favorite, color: Colors.red, size: 22.sp),
+                  // ),
                 ],
               ),
             ),

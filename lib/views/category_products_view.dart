@@ -1,8 +1,11 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flux_store/data/models/product_model.dart';
+import 'package:flux_store/data/repo/repo.dart';
+import 'package:flux_store/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 import '../core/constants/constants.dart';
-import '../data/services/category_products_services.dart';
 
 class CategoryProductsView extends StatefulWidget {
   const CategoryProductsView({super.key, required this.name});
@@ -15,21 +18,17 @@ class CategoryProductsView extends StatefulWidget {
 }
 
 class _CategoryProductsViewState extends State<CategoryProductsView> {
-  var future;
+  late Future<List<ProductModel>> future;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      getData();
-    });
+    Dio dio = Dio();
+    WebServices webServices = WebServices(dio);
+    Repo repo = Repo(webServices);
+    future = repo.getProductsByCategory(category: widget.name);
   }
 
-  void getData() {
-    future = CategoryProductsServices().getCategoriesProducts(
-      category: widget.name,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

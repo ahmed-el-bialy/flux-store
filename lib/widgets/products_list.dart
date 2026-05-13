@@ -1,5 +1,9 @@
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import '../data/services/all_product_services.dart';
+import 'package:flux_store/data/models/product_model.dart';
+import 'package:flux_store/data/repo/repo.dart';
+import 'package:flux_store/data/web_services/web_services.dart';
 import 'products_list_builder.dart';
 
 class ProductsList extends StatefulWidget {
@@ -10,18 +14,15 @@ class ProductsList extends StatefulWidget {
 }
 
 class _ProductsListState extends State<ProductsList> {
-  var future;
+  late Future<List<ProductModel>> future;
 
   @override
   void initState() {
     super.initState();
-    setState(() {
-      getData();
-    });
-  }
-
-  void getData() {
-    future = AllProductsServices().getAllProducts();
+    Dio dio = Dio();
+    WebServices webServices = WebServices(dio);
+    Repo repo = Repo(webServices);
+    future = repo.getAllProducts();
   }
 
   @override

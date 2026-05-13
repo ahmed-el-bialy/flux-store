@@ -11,18 +11,19 @@ class CategoriesListBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0).r,
+      padding:  EdgeInsets.symmetric(vertical: 4.h,horizontal: 3.w),
       child: Center(
         child: Wrap(
-          spacing: 8.0,
-          runSpacing: 8.0,
+          spacing: 6.h,
+          runSpacing: 6.w,
           children: categoryList.map((category) {
             return GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CategoryProductsView(name: category.name),
+                    builder: (context) =>
+                        CategoryProductsView(name: category.name),
                   ),
                 );
               },

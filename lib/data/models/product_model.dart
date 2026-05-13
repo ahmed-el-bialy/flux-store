@@ -1,12 +1,34 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'product_model.g.dart';
+
+@JsonSerializable()
+class ProductResponse {
+  @JsonKey(name: "products")
+  final List<ProductModel>? results;
+
+  ProductResponse({this.results});
+
+  factory ProductResponse.fromJson(Map<String, dynamic> json) =>
+      _$ProductResponseFromJson(json);
+}
+
+@JsonSerializable()
 class ProductModel {
+  @JsonKey(name: "thumbnail")
   final String image;
+  @JsonKey(name: "title")
   final String title;
+  @JsonKey(name: "price")
   final dynamic price;
+  @JsonKey(name: "rating")
   final double rate;
+  @JsonKey(name: "stock")
   final int stock;
+  @JsonKey(name: "description")
   final String description;
+  @JsonKey(name: "reviews")
   final List<ReviewsModel> reviews;
-  bool isFav;
 
   ProductModel({
     required this.image,
@@ -15,27 +37,16 @@ class ProductModel {
     required this.rate,
     required this.stock,
     required this.description,
-    this.isFav = false,
     required this.reviews,
   });
 
-  factory ProductModel.fromJson(jsonData) {
-    List<dynamic> rawReviews = jsonData["reviews"];
-    List<ReviewsModel> reviewsList = rawReviews
-        .map((eachReview) => ReviewsModel.fromJson(eachReview))
-        .toList();
-    return ProductModel(
-      image: jsonData["thumbnail"],
-      title: jsonData["title"],
-      price: jsonData["price"],
-      rate: jsonData['rating'],
-      stock: jsonData["stock"],
-      description: jsonData["description"],
-      reviews: reviewsList,
-    );
-  }
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }
 
+@JsonSerializable()
 class ReviewsModel {
   final int rating;
   final String comment;
@@ -49,12 +60,27 @@ class ReviewsModel {
     required this.reviewerName,
   });
 
-  factory ReviewsModel.fromJson(jsonData) {
-    return ReviewsModel(
-      rating: jsonData["rating"] ?? "?",
-      comment: jsonData["comment"] ?? "not Found",
-      date: jsonData["date"] ?? "?",
-      reviewerName: jsonData["reviewerName"] ?? "unknown",
-    );
-  }
+  factory ReviewsModel.fromJson(Map<String, dynamic> json) =>
+      _$ReviewsModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ReviewsModelToJson(this);
 }
+
+//   factory ReviewsModel.fromJson(jsonData) {
+//     return ReviewsModel(
+//       rating: jsonData["rating"] ?? "?",
+//       comment: jsonData["comment"] ?? "not Found",
+//       date: jsonData["date"] ?? "?",
+//       reviewerName: jsonData["reviewerName"] ?? "unknown",
+//     );
+//   }
+// }
+//
+// //
+// // factory ProductModel.fromJson(jsonData) {
+// //   List<dynamic> rawReviews = jsonData["reviews"];
+// //   List<ReviewsModel> reviewsList = rawReviews
+// //       .map((eachReview) => ReviewsModel.fromJson(eachReview))
+// //       .toList();
+// //   return ProductModel(
+// //   );

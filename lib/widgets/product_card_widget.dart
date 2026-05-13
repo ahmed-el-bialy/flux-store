@@ -70,25 +70,25 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                             ),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            widget.model.isFav = !widget.model.isFav;
-                            setState(() {
-                              widget.model.isFav;
-                            });
-                          },
-                          icon: widget.model.isFav == false
-                              ? Icon(
-                                  Icons.favorite,
-                                  color: Colors.grey[400],
-                                  size: 32,
-                                )
-                              : Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                  size: 32,
-                                ),
-                        ),
+                        // IconButton(
+                        //   onPressed: () {
+                        //     widget.model.isFav = !widget.model.isFav;
+                        //     setState(() {
+                        //       widget.model.isFav;
+                        //     });
+                        //   },
+                        //   icon: widget.model.isFav == false
+                        //       ? Icon(
+                        //           Icons.favorite,
+                        //           color: Colors.grey[400],
+                        //           size: 32,
+                        //         )
+                        //       : Icon(
+                        //           Icons.favorite,
+                        //           color: Colors.red,
+                        //           size: 32,
+                        //         ),
+                        // ),
                       ],
                     ),
                   ),
