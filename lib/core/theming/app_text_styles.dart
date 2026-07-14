@@ -18,4 +18,9 @@ class AppTextStyles {
     fontSize: 20.sp,
     fontWeight: FontWeight.w500,
   );
+  static final TextStyle fontBlack15Medium = TextStyle(
+    color: AppColors.black,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+  );
 }
