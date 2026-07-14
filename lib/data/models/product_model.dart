@@ -65,22 +65,3 @@ class ReviewsModel {
 
   Map<String, dynamic> toJson() => _$ReviewsModelToJson(this);
 }
-
-//   factory ReviewsModel.fromJson(jsonData) {
-//     return ReviewsModel(
-//       rating: jsonData["rating"] ?? "?",
-//       comment: jsonData["comment"] ?? "not Found",
-//       date: jsonData["date"] ?? "?",
-//       reviewerName: jsonData["reviewerName"] ?? "unknown",
-//     );
-//   }
-// }
-//
-// //
-// // factory ProductModel.fromJson(jsonData) {
-// //   List<dynamic> rawReviews = jsonData["reviews"];
-// //   List<ReviewsModel> reviewsList = rawReviews
-// //       .map((eachReview) => ReviewsModel.fromJson(eachReview))
-// //       .toList();
-// //   return ProductModel(
-// //   );
