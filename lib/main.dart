@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/views/category_search_view.dart';
-import 'package:flux_store/features/home/ui/home_screen.dart';
+
+import 'core/routing/app_router.dart';
 
 void main() {
-  runApp(FluxStore());
+  runApp(VibrantStoreApp(appRouter: AppRouter()));
 }
 
-class FluxStore extends StatelessWidget {
-  const FluxStore({super.key});
+class VibrantStoreApp extends StatelessWidget {
+  const VibrantStoreApp({super.key, required this.appRouter});
+
+  final AppRouter appRouter;
 
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
-      child: MaterialApp(
-        routes: {
-          CategorySearch.id: (context) => CategorySearch(),
-          HomeScreen.id: (context) => HomeScreen(),
-        },
-        initialRoute: HomeScreen.id,
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
-      ),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      ensureScreenSize: true,
+      builder: (_, child) {
+        return MaterialApp(
+          onGenerateRoute: appRouter.generateRoute,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }

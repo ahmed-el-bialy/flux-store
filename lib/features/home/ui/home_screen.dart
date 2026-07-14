@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flux_store/core/theming/app_colors.dart';
 
 import '../../../widgets/products_list.dart';
 import '../../../widgets/services_bar.dart';
-import '../../../core/constants/app_constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
 
       body: Column(
         children: [ProductsList(), ServicesBar()],
