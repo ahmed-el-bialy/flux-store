@@ -22,7 +22,7 @@ class AppNavigationBar extends StatelessWidget {
           child: Container(
             height: 62.h,
             decoration: BoxDecoration(
-              border: Border.all(color: AppColors.black, width: 1.1),
+              border: Border.all(color: AppColors.black, width: .35),
               borderRadius: BorderRadius.circular(25.r),
               color: AppColors.white.withValues(alpha: .5),
             ),
