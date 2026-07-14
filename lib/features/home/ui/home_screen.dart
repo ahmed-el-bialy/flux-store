@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
-
-import '../../../widgets/products_list.dart';
-import '../../../widgets/services_bar.dart';
+import 'package:flux_store/core/theming/app_text_styles.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,9 +13,22 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-
-      body: Column(
-        children: [ProductsList(), ServicesBar()],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text(
+              AppConstants.appName,
+              style: AppTextStyles.fontBlue24Bold,
+            ),
+            centerTitle: true,
+            elevation: 0,
+            pinned: true,
+            actions: [IconButton(onPressed: () {
+              /// TODO: implement search functionality
+            }, icon: Icon(Icons.search, size: 24.sp,))
+            ],
+          ),
+        ],
       ),
     );
   }
