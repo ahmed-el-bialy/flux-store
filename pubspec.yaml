@@ -45,7 +45,7 @@ dependencies:
   intl: ^0.20.3
   # A flutter plugin for adapting screen and font size.Guaranteed to look good on different models.
   flutter_screenutil: ^5.9.3
-  # Flutter library to load and cache network images. Can also be used with placeholder and error widgets..
+  # Flutter library to load and cache network images. Can also be used with placeholder and error widgets.
   cached_network_image: ^3.4.1
   # Automatically generate code for converting to and from JSON to annotation .
   json_annotation: ^4.11.0
@@ -93,9 +93,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -109,7 +108,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Schuyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
