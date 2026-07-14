@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/models/product_model.dart';
 import '../data/repo/home_repo.dart';
 
@@ -17,7 +16,6 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
 
     try {
       products = await homeRepo.getAllProducts();
-
       emit(GetAllProductsLoadedSuccessfully(products: products ?? []));
     } catch (e) {
       emit(GetAllProductsFailed(errorMessage: e.toString()));
