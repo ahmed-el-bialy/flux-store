@@ -8,4 +8,14 @@ class AppTextStyles {
     fontSize: 24.sp,
     fontWeight: FontWeight.bold,
   );
+  static final TextStyle fontBlue14Medium = TextStyle(
+    color: AppColors.blue,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle fontBlack18SimiBold = TextStyle(
+    color: AppColors.black,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+  );
 }

@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
+import 'package:flux_store/core/widgets/section_title.dart';
 
+import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,9 +33,11 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
 
-          SliverToBoxAdapter(
+          sliverVerticalSpacing(15),
 
-          )
+          SliverToBoxAdapter(
+            child: SectionTitle(sectionName: "Categories"),
+          ),
         ],
       ),
       bottomNavigationBar: AppNavigationBar(activeIndex: 0),
