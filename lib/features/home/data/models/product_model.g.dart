@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: unused_element
-
 part of 'product_model.dart';
 
 // **************************************************************************
@@ -15,11 +13,9 @@ ProductResponse _$ProductResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ProductResponseToJson(ProductResponse instance) =>
-    <String, dynamic>{'products': instance.results};
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
-  image: json['thumbnail'] as String,
+  image: json['thumbnail'] as String?,
   title: json['title'] as String,
   price: json['price'],
   rate: (json['rating'] as num).toDouble(),

@@ -16,7 +16,7 @@ class ProductResponse {
 @JsonSerializable()
 class ProductModel {
   @JsonKey(name: "thumbnail")
-  final String image;
+  final String? image;
   @JsonKey(name: "title")
   final String title;
   @JsonKey(name: "price")
