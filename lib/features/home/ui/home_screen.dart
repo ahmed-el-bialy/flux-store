@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../widgets/products_list.dart';
 import '../../../widgets/services_bar.dart';
-import '../../../core/constants/constants.dart';
+import '../../../core/constants/app_constants.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

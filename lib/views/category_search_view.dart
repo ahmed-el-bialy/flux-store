@@ -7,7 +7,7 @@ import 'package:flux_store/widgets/services_bar.dart';
 import '../data/models/category_model.dart';
 import '../widgets/categories_list_builder.dart';
 import '../widgets/custom_text_field.dart';
-import '../core/constants/constants.dart';
+import '../core/constants/app_constants.dart';
 
 class CategorySearch extends StatefulWidget {
   const CategorySearch({super.key});
@@ -41,7 +41,7 @@ class _CategorySearchState extends State<CategorySearch> {
         ),
         centerTitle: true,
         elevation: 5,
-        backgroundColor: Color(kMainColor),
+        backgroundColor: Color(0xff9C27B0),
       ),
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -70,7 +70,7 @@ class _CategorySearchState extends State<CategorySearch> {
                       SizedBox(height: 40.h),
                       Center(
                         child: CircularProgressIndicator(
-                          color: Color(kMainColor),
+                          color: Color(0xff9C27B0),
                         ),
                       ),
                     ],

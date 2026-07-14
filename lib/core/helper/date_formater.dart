@@ -4,5 +4,4 @@ String dateFormater(String rawDate) {
   DateTime dateTime = DateTime.parse(rawDate);
 
   return DateFormat('yyyy-MM-dd').format(dateTime);
-
 }

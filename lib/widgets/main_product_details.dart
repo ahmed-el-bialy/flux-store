@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/constants/constants.dart';
+import '../core/constants/app_constants.dart';
 import '../data/models/product_model.dart';
 
 class MainProductDetails extends StatefulWidget {
@@ -33,7 +33,7 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                   child: CachedNetworkImage(
                     imageUrl: widget.model.image,
                     placeholder: (context, url) =>
-                        CircularProgressIndicator(color: Color(kMainColor)),
+                        CircularProgressIndicator(color: Color(0xff9C27B0)),
                     errorWidget: (context, url, error) => Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),

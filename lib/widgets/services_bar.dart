@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/features/home/ui/home_screen.dart';
 
 import '../views/category_search_view.dart';
-import '../core/constants/constants.dart';
 
 class ServicesBar extends StatelessWidget {
   const ServicesBar({super.key});
@@ -12,7 +11,7 @@ class ServicesBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60.h,
-      color: Color(kMainColor),
+      color: Color(0xff9C27B0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

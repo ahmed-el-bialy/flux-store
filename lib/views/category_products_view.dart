@@ -5,7 +5,6 @@ import 'package:flux_store/data/repo/repo.dart';
 import 'package:flux_store/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
 import 'package:flux_store/widgets/services_bar.dart';
-import '../core/constants/constants.dart';
 
 class CategoryProductsView extends StatefulWidget {
   const CategoryProductsView({super.key, required this.name});
@@ -36,7 +35,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(widget.name, style: TextStyle(color: Colors.white)),
-        backgroundColor: Color(kMainColor),
+        backgroundColor: Colors.indigoAccent,
         centerTitle: true,
       ),
 

@@ -4,7 +4,7 @@ import '../data/models/product_model.dart';
 import '../widgets/more_product_details.dart';
 import '../widgets/main_product_details.dart';
 import '../widgets/reviews_list_builder.dart';
-import '../core/constants/constants.dart';
+import '../core/constants/app_constants.dart';
 
 class ProductView extends StatelessWidget {
   const ProductView({super.key, required this.model});
@@ -24,7 +24,7 @@ class ProductView extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         centerTitle: true,
-        backgroundColor: Color(kMainColor),
+        backgroundColor: Color(0xff9C27B0),
       ),
 
       body: Column(

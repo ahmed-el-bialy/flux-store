@@ -2,11 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:flux_store/data/models/category_model.dart';
 import 'package:flux_store/data/models/product_model.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../core/constants/constants.dart';
+
+import '../../core/constants/app_constants.dart';
 
 part 'web_services.g.dart';
 
-@RestApi(baseUrl: apiUrl)
+@RestApi(baseUrl: AppConstants.apiUrl)
 abstract class WebServices {
   factory WebServices(Dio dio, {String? baseUrl}) = _WebServices;
 
