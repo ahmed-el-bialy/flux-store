@@ -4,6 +4,8 @@ import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 
+import '../../../core/widgets/app_navigation_bar.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -28,8 +30,13 @@ class HomeScreen extends StatelessWidget {
             }, icon: Icon(Icons.search, size: 24.sp,))
             ],
           ),
+
+          SliverToBoxAdapter(
+
+          )
         ],
       ),
+      bottomNavigationBar: AppNavigationBar(activeIndex: 0),
     );
   }
 }
