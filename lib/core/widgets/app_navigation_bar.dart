@@ -18,13 +18,13 @@ class AppNavigationBar extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10.h, left: 18.w, right: 18.w),
       child: ClipRRect(
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
           child: Container(
             height: 62.h,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.black, width: 1.1),
               borderRadius: BorderRadius.circular(25.r),
-              color: AppColors.white.withValues(alpha: .6),
+              color: AppColors.white.withValues(alpha: .5),
             ),
             child: Material(
               color: Colors.transparent,

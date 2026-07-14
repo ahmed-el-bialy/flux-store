@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
 
-          sliverVerticalSpacing(15),
+          sliverVerticalSpacing(10),
 
           SliverToBoxAdapter(child: SectionTitle(sectionName: "Categories")),
 
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
 
-          sliverVerticalSpacing(15),
+          sliverVerticalSpacing(5),
 
           SliverToBoxAdapter(
             child: SectionTitle(sectionName: "Featured Products"),
@@ -73,6 +73,7 @@ class HomeScreen extends StatelessWidget {
               return ItemCard();
             },
           ),
+          sliverVerticalSpacing(20)
         ],
       ),
       bottomNavigationBar: AppNavigationBar(activeIndex: 0),
