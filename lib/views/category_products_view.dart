@@ -4,7 +4,6 @@ import 'package:flux_store/features/home/data/models/product_model.dart';
 import 'package:flux_store/features/home/data/repo/repo.dart';
 import 'package:flux_store/features/home/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
-import 'package:flux_store/widgets/services_bar.dart';
 
 class CategoryProductsView extends StatefulWidget {
   const CategoryProductsView({super.key, required this.name});
@@ -28,7 +27,6 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
     future = repo.getProductsByCategory(category: widget.name);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +37,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
         centerTitle: true,
       ),
 
-      body: Column(
-        children: [
-          ProductListBuilder(future: future),
-
-          ServicesBar(),
-        ],
-      ),
+      body: Column(children: [ProductListBuilder(future: future)]),
     );
   }
 }

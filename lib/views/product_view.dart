@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flux_store/widgets/services_bar.dart';
 
 import '../features/home/data/models/product_model.dart';
 import '../widgets/main_product_details.dart';
@@ -44,7 +43,6 @@ class ProductView extends StatelessWidget {
               ],
             ),
           ),
-          ServicesBar(),
         ],
       ),
     );

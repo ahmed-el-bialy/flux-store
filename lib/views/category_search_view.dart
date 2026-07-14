@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/features/home/data/repo/repo.dart';
 import 'package:flux_store/features/home/data/web_services/web_services.dart';
-import 'package:flux_store/widgets/services_bar.dart';
 
 import '../features/home/data/models/category_model.dart';
 import '../widgets/categories_list_builder.dart';
@@ -83,7 +82,6 @@ class _CategorySearchState extends State<CategorySearch> {
               },
             ),
             Spacer(flex: 1),
-            ServicesBar(),
           ],
         ),
       ),

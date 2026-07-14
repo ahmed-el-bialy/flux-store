@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/core/constants/app_constants.dart';
 
 import 'core/routing/app_router.dart';
 
@@ -21,6 +22,7 @@ class VibrantStoreApp extends StatelessWidget {
       ensureScreenSize: true,
       builder: (_, child) {
         return MaterialApp(
+          initialRoute: AppConstants.homeScreen,
           onGenerateRoute: appRouter.generateRoute,
           debugShowCheckedModeBanner: false,
         );
