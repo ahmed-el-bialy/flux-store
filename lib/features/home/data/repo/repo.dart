@@ -1,4 +1,4 @@
-import 'package:flux_store/data/models/category_model.dart';
+import 'package:flux_store/features/home/data/models/category_model.dart';
 
 import '../models/product_model.dart';
 import '../web_services/web_services.dart';

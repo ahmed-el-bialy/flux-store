@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/data/repo/repo.dart';
-import 'package:flux_store/data/web_services/web_services.dart';
+import 'package:flux_store/features/home/data/repo/repo.dart';
+import 'package:flux_store/features/home/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/services_bar.dart';
-import '../data/models/category_model.dart';
+
+import '../features/home/data/models/category_model.dart';
 import '../widgets/categories_list_builder.dart';
 import '../widgets/custom_text_field.dart';
-import '../core/constants/app_constants.dart';
 
 class CategorySearch extends StatefulWidget {
   const CategorySearch({super.key});

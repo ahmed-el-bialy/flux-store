@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flux_store/data/models/product_model.dart';
-import 'package:flux_store/data/repo/repo.dart';
-import 'package:flux_store/data/web_services/web_services.dart';
+import 'package:flux_store/features/home/data/models/product_model.dart';
+import 'package:flux_store/features/home/data/repo/repo.dart';
+import 'package:flux_store/features/home/data/web_services/web_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
 import 'package:flux_store/widgets/services_bar.dart';
 

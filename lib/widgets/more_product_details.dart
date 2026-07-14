@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../data/models/product_model.dart';
+import '../features/home/data/models/product_model.dart';
 
 class MoreProductDetails extends StatelessWidget {
   const MoreProductDetails({super.key, required this.model});

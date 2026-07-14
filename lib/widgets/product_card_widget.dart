@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/views/product_view.dart';
 
-import '../data/models/product_model.dart';
+import '../features/home/data/models/product_model.dart';
 
 class ProductCardWidget extends StatefulWidget {
   const ProductCardWidget({super.key, required this.model});

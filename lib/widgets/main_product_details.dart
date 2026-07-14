@@ -2,8 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/constants/app_constants.dart';
-import '../data/models/product_model.dart';
+import '../features/home/data/models/product_model.dart';
 
 class MainProductDetails extends StatefulWidget {
   const MainProductDetails({super.key, required this.model});
