@@ -2,7 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
-import 'package:flux_store/features/home/data/repo/repo.dart';
+import 'package:flux_store/features/home/data/repo/home_repo.dart';
 import 'package:flux_store/features/home/data/web_services/web_services.dart';
 import 'products_list_builder.dart';
 
@@ -21,7 +21,7 @@ class _ProductsListState extends State<ProductsList> {
     super.initState();
     Dio dio = Dio();
     WebServices webServices = WebServices(dio);
-    Repo repo = Repo(webServices);
+    HomeRepo repo = HomeRepo(webServices);
     future = repo.getAllProducts();
   }
 

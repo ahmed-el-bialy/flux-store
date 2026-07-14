@@ -30,7 +30,7 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
                   child: CachedNetworkImage(
-                    imageUrl: widget.model.image,
+                    imageUrl: widget.model.image ??"",
                     placeholder: (context, url) =>
                         CircularProgressIndicator(color: Color(0xff9C27B0)),
                     errorWidget: (context, url, error) => Center(

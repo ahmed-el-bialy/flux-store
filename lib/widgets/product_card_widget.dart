@@ -55,7 +55,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
                           child: ClipRRect(
                             borderRadius: BorderRadiusGeometry.circular(10),
                             child: CachedNetworkImage(
-                              imageUrl: widget.model.image,
+                              imageUrl: widget.model.image??"",
                               fit: BoxFit.fill,
                               placeholder: (context, url) => Padding(
                                 padding: const EdgeInsets.all(8.0),
