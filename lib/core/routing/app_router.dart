@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flux_store/core/networking/dio_factory.dart';
+import 'package:flux_store/features/details/ui/details_screen.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
 import 'package:flux_store/features/home/data/web_services/web_services.dart';
 
@@ -12,13 +13,17 @@ class AppRouter {
   Route generateRoute(RouteSettings setting) {
     switch (setting.name) {
       case AppConstants.homeScreen:
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider(
-              create: (context) =>
-                  GetAllProductsCubit(
-                      homeRepo: HomeRepo(WebServices(DioFactory.getDio())))..getAllProducts(),
-              child: HomeScreen(),
-            ));
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => GetAllProductsCubit(
+              homeRepo: HomeRepo(WebServices(DioFactory.getDio())),
+            )..getAllProducts(),
+            child: const HomeScreen(),
+          ),
+        );
+
+      case AppConstants.detailsScreen:
+        return MaterialPageRoute(builder: (_) => const DetailsScreen());
 
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
