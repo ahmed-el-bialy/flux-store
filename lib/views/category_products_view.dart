@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
-import 'package:flux_store/features/home/data/web_services/web_services.dart';
+import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
 import 'package:flux_store/widgets/products_list_builder.dart';
 
 class CategoryProductsView extends StatefulWidget {
@@ -22,7 +22,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
   void initState() {
     super.initState();
     Dio dio = Dio();
-    WebServices webServices = WebServices(dio);
+    HomeWebServices webServices = HomeWebServices(dio);
     HomeRepo repo = HomeRepo(webServices);
     future = repo.getProductsByCategory(category: widget.name);
   }

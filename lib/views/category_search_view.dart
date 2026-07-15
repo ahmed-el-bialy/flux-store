@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
-import 'package:flux_store/features/home/data/web_services/web_services.dart';
+import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
 
 import '../features/home/data/models/category_model.dart';
 import '../widgets/categories_list_builder.dart';
@@ -24,7 +24,7 @@ class _CategorySearchState extends State<CategorySearch> {
   void initState() {
     super.initState();
     Dio dio = Dio();
-    WebServices webServices = WebServices(dio);
+    HomeWebServices webServices = HomeWebServices(dio);
     HomeRepo repo = HomeRepo(webServices);
     future = repo.getAllCategories();
   }

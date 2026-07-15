@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
-import 'package:flux_store/features/home/data/web_services/web_services.dart';
+import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
 import 'products_list_builder.dart';
 
 class ProductsList extends StatefulWidget {
@@ -20,7 +20,7 @@ class _ProductsListState extends State<ProductsList> {
   void initState() {
     super.initState();
     Dio dio = Dio();
-    WebServices webServices = WebServices(dio);
+    HomeWebServices webServices = HomeWebServices(dio);
     HomeRepo repo = HomeRepo(webServices);
     future = repo.getAllProducts();
   }
