@@ -23,7 +23,7 @@ class ReviewCardWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0,bottom: 10,top: 8),
                   child: Text(
-                    reviews.reviewerName,
+                    reviews.reviewerName!,
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
@@ -36,7 +36,7 @@ class ReviewCardWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    dateFormater(reviews.date),
+                    dateFormater(reviews.date!),
                     style: TextStyle(fontSize: 12.sp),
                   ),
                 ),
@@ -62,7 +62,7 @@ class ReviewCardWidget extends StatelessWidget {
                     horizontal: 15,
                   ),
                   child: Text(
-                    reviews.comment,
+                    reviews.comment!,
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,

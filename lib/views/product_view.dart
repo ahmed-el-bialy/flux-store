@@ -39,7 +39,7 @@ class ProductView extends StatelessWidget {
                   ),
                 ),
                 MoreProductDetails(model: model),
-                ReviewsListBuilder(reviews: model.reviews),
+                ReviewsListBuilder(reviews: model.reviews!),
               ],
             ),
           ),

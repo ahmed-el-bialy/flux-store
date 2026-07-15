@@ -25,7 +25,7 @@ class MoreProductDetails extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                model.description,
+                model.description!,
                 style: TextStyle(
                   fontSize: 16.sp,
                   color: Colors.grey,
