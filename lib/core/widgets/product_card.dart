@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/core/constants/app_constants.dart';
+import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
@@ -26,7 +28,7 @@ class ProductCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            /// TODO: implement  functionality
+            context.pushNamed(AppConstants.detailsScreen, model.id);
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
