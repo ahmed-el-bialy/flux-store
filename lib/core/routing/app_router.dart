@@ -30,10 +30,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => ProductDetailsCubit(
-              detailsRepo: DetailsRepo(DetailsWebServices(DioFactory.getDio()))
-                ..getProductsDetails(id: arguments),
-            ),
-            child: DetailsScreen(),
+              detailsRepo: DetailsRepo(DetailsWebServices(DioFactory.getDio())),
+            )..getProductDetails(id: arguments),
+            child: const DetailsScreen(),
           ),
         );
 
