@@ -5,12 +5,13 @@ import 'package:shimmer/shimmer.dart';
 import '../theming/app_colors.dart';
 
 class ImagePlaceHolder extends StatelessWidget {
-  const ImagePlaceHolder({super.key});
+  const ImagePlaceHolder({super.key, this.h});
 
+  final double? h;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 135.h,
+      height: h??135.h,
       child: Center(
         child: Shimmer.fromColors(
           baseColor: AppColors.black.withValues(alpha: 0.6),

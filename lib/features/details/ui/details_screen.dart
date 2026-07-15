@@ -10,7 +10,6 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(extendBody: true, backgroundColor: AppColors.white
 
 
-
     );
   }
 }

@@ -1,24 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/core/theming/app_colors.dart';
+import 'package:flux_store/core/widgets/image_place_holder.dart';
 
 import '../features/home/data/models/product_model.dart';
 
-class MainProductDetails extends StatefulWidget {
+class MainProductDetails extends StatelessWidget {
   const MainProductDetails({super.key, required this.model});
 
   final ProductModel model;
 
   @override
-  State<MainProductDetails> createState() => _MainProductDetailsState();
-}
-
-class _MainProductDetailsState extends State<MainProductDetails> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
+      padding: EdgeInsets.symmetric(vertical: 1.h),
       child: Card(
+        color: AppColors.lightBlue,
         elevation: 1,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,9 +28,9 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
                   child: CachedNetworkImage(
-                    imageUrl: widget.model.image ??"",
+                    imageUrl: model.image ??"",
                     placeholder: (context, url) =>
-                        CircularProgressIndicator(color: Color(0xff9C27B0)),
+                        ImagePlaceHolder(),
                     errorWidget: (context, url, error) => Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.h),
@@ -56,7 +54,7 @@ class _MainProductDetailsState extends State<MainProductDetails> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               child: Text(
-                widget.model.title,
+                model.title,
                 style: TextStyle(fontSize: 24.sp, color: Colors.black),
               ),
             ),
@@ -66,7 +64,7 @@ class _MainProductDetailsState extends State<MainProductDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "price : ${widget.model.price} \$",
+                    "price : ${model.price} \$",
                     style: TextStyle(fontSize: 22.sp, color: Colors.black),
                   ),
                   // IconButton(
