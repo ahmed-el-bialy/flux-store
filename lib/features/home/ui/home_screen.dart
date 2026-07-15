@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
-import 'package:flux_store/core/widgets/loading_card.dart';
 import 'package:flux_store/core/widgets/section_title.dart';
 import 'package:flux_store/features/home/data/local/categories_data.dart';
 import 'package:flux_store/features/home/logic/get_all_products_cubit.dart';
@@ -12,6 +11,7 @@ import 'package:flux_store/features/home/ui/widgets/category_item.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
+import '../../../core/widgets/loading_products_grid_view.dart';
 import '../../../core/widgets/products_grid_view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -69,15 +69,7 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<GetAllProductsCubit, GetAllProductsState>(
             builder: (context, state) {
               if (state is GetAllProductsLoading) {
-                return SliverGrid.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: .6,
-                  ),
-                  itemBuilder: (context, index) {
-                    return LoadingCard();
-                  },
-                );
+                return LoadingProductsGridView();
               }
               if (state is GetAllProductsLoadedSuccessfully) {
                 return ProductsGridView(models: state.products);

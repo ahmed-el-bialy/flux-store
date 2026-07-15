@@ -18,8 +18,16 @@ class LoadingCard extends StatelessWidget {
           width: 170.w,
           height: 280.h,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(18.r),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.black,
+                blurRadius: 10,
+                spreadRadius: 2,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
         ),
       ),
