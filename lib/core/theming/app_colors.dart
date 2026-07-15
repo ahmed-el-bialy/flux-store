@@ -7,5 +7,6 @@ class AppColors {
   static final Color white = Color(0xFFF8F9FF);
   static const Color shimmerBase = Color(0xFFE0E0E0);
   static const Color shimmerHighlight = Color(0xFFF5F5F5);
+  static const Color lightBlue = Color(0xFFDBE5FA);
 
 }
