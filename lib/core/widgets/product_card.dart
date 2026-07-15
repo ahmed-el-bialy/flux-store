@@ -25,14 +25,16 @@ class ProductCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(18.r),
         ),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            /// TODO: implement  functionality
+          },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Card(
                 color: AppColors.white,
                 elevation: .5,
-                margin: EdgeInsets.all(4.w),
+                margin: EdgeInsets.all(6.w),
                 clipBehavior: Clip.antiAlias,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.r),
@@ -52,15 +54,17 @@ class ProductCard extends StatelessWidget {
                     ),
                     Positioned(
                       top: 3.h,
-                      right: 3.w,
+                      right: 1.w,
                       child: Card(
                         elevation: 2,
                         clipBehavior: Clip.antiAlias,
                         shape: const CircleBorder(),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            /// TODO: implement favorite functionality
+                          },
                           child: Padding(
-                            padding: EdgeInsets.all(6.r),
+                            padding: EdgeInsets.all(8.r),
                             child: Icon(
                               Icons.favorite_border_outlined,
                               size: 18.sp,
@@ -71,10 +75,10 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 4.h,
-                      left: 4.w,
+                      top: 2.h,
+                      left: 2.w,
                       child: Card(
-                        elevation: 1,
+                        elevation: .5,
                         color: AppColors.white.withValues(alpha: 0.9),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.r),
@@ -84,12 +88,23 @@ class ProductCard extends StatelessWidget {
                             horizontal: 6.w,
                             vertical: 4.h,
                           ),
-                          child: Text(
-                            "${model.rate}",
-                            style: TextStyle(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: AppColors.orange,
+                                size: 14.sp,
+                              ),
+                              horizontalSpacing(2),
+                              Text(
+                                "${model.rate}",
+                                style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -119,7 +134,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "${model.price}",
+                      "\$${model.price}",
                       style: AppTextStyles.fontBlue24Bold.copyWith(
                         fontSize: 16.sp,
                       ),
@@ -129,7 +144,9 @@ class ProductCard extends StatelessWidget {
                       clipBehavior: Clip.antiAlias,
                       shape: const CircleBorder(),
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          /// TODO: implement add_to_cart functionality
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(8.r),
                           child: Icon(
