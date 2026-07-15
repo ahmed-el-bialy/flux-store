@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
 import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
-import 'package:flux_store/widgets/products_list_builder.dart';
 
 class CategoryProductsView extends StatefulWidget {
   const CategoryProductsView({super.key, required this.name});
@@ -37,7 +36,6 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
         centerTitle: true,
       ),
 
-      body: Column(children: [ProductListBuilder(future: future)]),
     );
   }
 }
