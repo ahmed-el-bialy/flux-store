@@ -15,29 +15,59 @@ class ProductResponse {
 
 @JsonSerializable()
 class ProductModel {
-  @JsonKey(name: "thumbnail")
-  final String? image;
+  @JsonKey(name: "id")
+  final int? id;
+
   @JsonKey(name: "title")
   final String title;
-  @JsonKey(name: "price")
-  final dynamic price;
-  @JsonKey(name: "rating")
-  final double rate;
-  @JsonKey(name: "stock")
-  final int stock;
+
   @JsonKey(name: "description")
-  final String description;
+  final String? description;
+
+  @JsonKey(name: "category")
+  final String? category;
+
+  @JsonKey(name: "price")
+  final num price;
+
+  @JsonKey(name: "discountPercentage")
+  final num? discountPercentage;
+
+  @JsonKey(name: "rating")
+  final num rate;
+
+  @JsonKey(name: "stock")
+  final int? stock;
+
+  @JsonKey(name: "brand")
+  final String? brand;
+
+  @JsonKey(name: "availabilityStatus")
+  final String? availabilityStatus;
+
   @JsonKey(name: "reviews")
-  final List<ReviewsModel> reviews;
+  final List<ReviewsModel>? reviews;
+
+  @JsonKey(name: "images")
+  final List<String>? images;
+
+  @JsonKey(name: "thumbnail")
+  final String? image;
 
   ProductModel({
-    required this.image,
+    this.id,
     required this.title,
+    this.description,
+    this.category,
     required this.price,
+    this.discountPercentage,
     required this.rate,
-    required this.stock,
-    required this.description,
-    required this.reviews,
+    this.stock,
+    this.brand,
+    this.availabilityStatus,
+    this.reviews,
+    this.images,
+    required this.image,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
@@ -48,16 +78,27 @@ class ProductModel {
 
 @JsonSerializable()
 class ReviewsModel {
-  final int rating;
-  final String comment;
-  final String date;
-  final String reviewerName;
+  @JsonKey(name: "rating")
+  final num? rating;
+
+  @JsonKey(name: "comment")
+  final String? comment;
+
+  @JsonKey(name: "date")
+  final String? date;
+
+  @JsonKey(name: "reviewerName")
+  final String? reviewerName;
+
+  @JsonKey(name: "reviewerEmail")
+  final String? reviewerEmail;
 
   ReviewsModel({
-    required this.rating,
-    required this.comment,
-    required this.date,
-    required this.reviewerName,
+    this.rating,
+    this.comment,
+    this.date,
+    this.reviewerName,
+    this.reviewerEmail,
   });
 
   factory ReviewsModel.fromJson(Map<String, dynamic> json) =>
