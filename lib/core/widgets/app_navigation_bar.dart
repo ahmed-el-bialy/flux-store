@@ -53,7 +53,7 @@ class AppNavigationBar extends StatelessWidget {
                         size: 28.sp,
                         color: activeIndex == 0
                             ? AppColors.blue
-                            : AppColors.black,
+                            : AppColors.grayText,
                       ),
                     ),
                   ),
@@ -74,8 +74,8 @@ class AppNavigationBar extends StatelessWidget {
                         size: 28.sp,
                         color: activeIndex == 1
                             ? AppColors.blue
-                            : AppColors.black,
-                      ),
+                            : AppColors.grayText,
+                      )
                     ),
                   ),
 
@@ -95,7 +95,7 @@ class AppNavigationBar extends StatelessWidget {
                         size: 28.sp,
                         color: activeIndex == 2
                             ? AppColors.blue
-                            : AppColors.black,
+                            : AppColors.grayText,
                       ),
                     ),
                   ),
@@ -116,7 +116,7 @@ class AppNavigationBar extends StatelessWidget {
                         size: 28.sp,
                         color: activeIndex == 3
                             ? AppColors.blue
-                            : AppColors.black,
+                            : AppColors.grayText,
                       ),
                     ),
                   ),
