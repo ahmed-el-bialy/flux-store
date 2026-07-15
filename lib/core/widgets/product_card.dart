@@ -8,8 +8,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../theming/app_colors.dart';
 
-class ItemCard extends StatelessWidget {
-  const ItemCard({super.key, required this.model});
+class ProductCard extends StatelessWidget {
+  const ProductCard({super.key, required this.model});
 
   final ProductModel model;
 
