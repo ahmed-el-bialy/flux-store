@@ -151,10 +151,12 @@ class ScreenBody extends StatelessWidget {
                     "No reviews yet.",
                     style: AppTextStyles.fontGray14Regular,
                   ),
+
               ],
             ),
           ),
         ),
+        sliverVerticalSpacing(40)
       ],
     );
   }
