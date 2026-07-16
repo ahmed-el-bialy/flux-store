@@ -76,23 +76,29 @@ class CategoriesScreen extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 5.w),
                 child: Card(
-                  elevation: 2,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        CategoriesData.categoryList[index].image,
-                        height: 50.h,
-                      ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12.r),
+                    splashColor: AppColors.blue.withValues(alpha: .2),
+                    onTap: () {
+                      /// TODO implement tap functionality
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          CategoriesData.categoryList[index].image,
+                          height: 50.h,
+                        ),
 
-                      verticalSpacing(10),
+                        verticalSpacing(10),
 
-                      Text(
-                        CategoriesData.categoryList[index].name,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.fontBlack14SemiBold,
-                      ),
-                    ],
+                        Text(
+                          CategoriesData.categoryList[index].name,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyles.fontBlack14SemiBold,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
