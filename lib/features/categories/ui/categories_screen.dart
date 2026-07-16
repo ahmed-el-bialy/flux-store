@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
+import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
 import 'package:flux_store/core/widgets/app_navigation_bar.dart';
 import 'package:flux_store/core/widgets/app_text_form_field.dart';
@@ -20,10 +21,20 @@ class CategoriesScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: Text(AppConstants.appName),
+            title: Text(
+              AppConstants.appName,
+              style: AppTextStyles.fontBlack18SimiBold,
+            ),
             centerTitle: true,
             elevation: 0,
             pinned: true,
+            floating: true,
+            leading: IconButton(
+              onPressed: () {
+                context.pop();
+              },
+              icon: Icon(Icons.arrow_back_rounded),
+            ),
           ),
 
           sliverVerticalSpacing(12),
@@ -38,18 +49,17 @@ class CategoriesScreen extends StatelessWidget {
             ),
           ),
 
-          sliverVerticalSpacing(8),
+          sliverVerticalSpacing(15),
 
           SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w),
               child: AppTextFormField(
                 hintText: "Search for category",
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    /// TODO: implement search functionality
-                  },
-                  icon: Icon(Icons.search, size: 24.sp),
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 24.sp,
+                  color: AppColors.grayText,
                 ),
               ),
             ),
@@ -64,7 +74,7 @@ class CategoriesScreen extends StatelessWidget {
             itemCount: CategoriesData.categoryList.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding:  EdgeInsets.symmetric(vertical: 4.h,horizontal: 5.w),
+                padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 5.w),
                 child: Card(
                   elevation: 2,
                   child: Column(
@@ -88,8 +98,8 @@ class CategoriesScreen extends StatelessWidget {
               );
             },
           ),
-          
-          sliverVerticalSpacing(70)
+
+          sliverVerticalSpacing(70),
         ],
       ),
       bottomNavigationBar: AppNavigationBar(activeIndex: 1),
