@@ -1,6 +1,7 @@
 import 'package:flux_store/features/home/data/models/off_line_category_model.dart';
+class CategoriesData {
 
-List<OffLineCategoryModel> categoryList = [
+static final List<OffLineCategoryModel> categoryList = [
   OffLineCategoryModel(name: "Laptops", image: "assets/laptops.png"),
   OffLineCategoryModel(name: "Beauty", image: "assets/beauty.png"),
   OffLineCategoryModel(name: "Furniture", image: "assets/furniture.png"),
@@ -43,3 +44,4 @@ List<OffLineCategoryModel> categoryList = [
     image: "assets/womens_watches.png",
   ),
 ];
+}
