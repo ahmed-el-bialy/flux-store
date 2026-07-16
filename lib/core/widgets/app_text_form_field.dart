@@ -53,7 +53,7 @@ class AppTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
 
-        fillColor: backgroundColor ?? AppColors.lightBlue,
+        fillColor: backgroundColor ?? AppColors.lightBlue.withValues(alpha: .8),
         isDense: true,
         contentPadding:
             contentPadding ??
