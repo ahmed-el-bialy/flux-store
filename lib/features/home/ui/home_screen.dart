@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
             },
           ),
 
-          sliverVerticalSpacing(20),
+          sliverVerticalSpacing(65),
         ],
       ),
 
