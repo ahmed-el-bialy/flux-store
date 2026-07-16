@@ -14,6 +14,9 @@ class AppNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color activeColor = AppColors.focusedBlue;
+    final Color inActiveColor = AppColors.grayText;
+
     return Padding(
       padding: EdgeInsets.only(bottom: 10.h, left: 18.w, right: 18.w),
       child: ClipRRect(
@@ -51,9 +54,7 @@ class AppNavigationBar extends StatelessWidget {
                       child: Icon(
                         Icons.home_rounded,
                         size: 28.sp,
-                        color: activeIndex == 0
-                            ? AppColors.blue
-                            : AppColors.grayText,
+                        color: activeIndex == 0 ? activeColor : inActiveColor,
                       ),
                     ),
                   ),
@@ -64,8 +65,7 @@ class AppNavigationBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.r),
                     onTap: () {
                       if (activeIndex != 1) {
-                        context.pushReplacementNamed(
-                            AppConstants.categoriesScreen, null);
+                        context.pushNamed(AppConstants.categoriesScreen, null);
                       }
                     },
                     child: Padding(
@@ -73,10 +73,8 @@ class AppNavigationBar extends StatelessWidget {
                       child: Icon(
                         Icons.category_rounded,
                         size: 28.sp,
-                        color: activeIndex == 1
-                            ? AppColors.blue
-                            : AppColors.grayText,
-                      )
+                        color: activeIndex == 1 ? activeColor : inActiveColor,
+                      ),
                     ),
                   ),
 
@@ -94,9 +92,7 @@ class AppNavigationBar extends StatelessWidget {
                       child: Icon(
                         Icons.shopping_cart_rounded,
                         size: 28.sp,
-                        color: activeIndex == 2
-                            ? AppColors.blue
-                            : AppColors.grayText,
+                        color: activeIndex == 2 ? activeColor : inActiveColor,
                       ),
                     ),
                   ),
@@ -115,9 +111,7 @@ class AppNavigationBar extends StatelessWidget {
                       child: Icon(
                         Icons.person_rounded,
                         size: 28.sp,
-                        color: activeIndex == 3
-                            ? AppColors.blue
-                            : AppColors.grayText,
+                        color: activeIndex == 3 ? activeColor : inActiveColor,
                       ),
                     ),
                   ),
