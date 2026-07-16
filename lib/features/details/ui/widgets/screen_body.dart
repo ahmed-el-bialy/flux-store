@@ -30,6 +30,7 @@ class ScreenBody extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       slivers: [
         SliverAppBar(
+          forceMaterialTransparency: true,
           backgroundColor: Colors.transparent,
           pinned: false,
           floating: true,
