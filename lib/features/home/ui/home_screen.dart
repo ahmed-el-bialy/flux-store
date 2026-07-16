@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: 6,
                 itemBuilder: (context, index) {
-                  return CategoryItem(model: categoryList[index]);
+                  return CategoryItem(model: CategoriesData.categoryList[index]);
                 },
               ),
             ),
