@@ -23,7 +23,7 @@ class CategoriesScreen extends StatelessWidget {
           SliverAppBar(
             title: Text(
               AppConstants.appName,
-              style: AppTextStyles.fontBlack18SimiBold,
+              style: AppTextStyles.fontBlue23Bold,
             ),
             centerTitle: true,
             elevation: 0,
@@ -37,7 +37,7 @@ class CategoriesScreen extends StatelessWidget {
             ),
           ),
 
-          sliverVerticalSpacing(12),
+          sliverVerticalSpacing(15),
 
           SliverToBoxAdapter(
             child: Padding(

@@ -112,7 +112,7 @@ class ScreenBody extends StatelessWidget {
                       children: [
                         Text(
                           "\$${price.toStringAsFixed(2)}",
-                          style: AppTextStyles.fontBlue24Bold,
+                          style: AppTextStyles.fontBlue23Bold,
                         ),
                         if (hasDiscount) ...[
                           verticalSpacing(2),

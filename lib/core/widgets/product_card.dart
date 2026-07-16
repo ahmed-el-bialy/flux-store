@@ -137,7 +137,7 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Text(
                       "\$${model.price}",
-                      style: AppTextStyles.fontBlue24Bold.copyWith(
+                      style: AppTextStyles.fontBlue23Bold.copyWith(
                         fontSize: 16.sp,
                       ),
                     ),

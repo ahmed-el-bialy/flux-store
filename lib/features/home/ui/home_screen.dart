@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           SliverAppBar(
             title: Text(
               AppConstants.appName,
-              style: AppTextStyles.fontBlue24Bold,
+              style: AppTextStyles.fontBlue23Bold,
             ),
             centerTitle: true,
             elevation: 0,
