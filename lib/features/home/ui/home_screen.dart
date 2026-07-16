@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemCount: categoryList.length,
+                itemCount: 6,
                 itemBuilder: (context, index) {
                   return CategoryItem(model: categoryList[index]);
                 },

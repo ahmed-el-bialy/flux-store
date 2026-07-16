@@ -21,7 +21,7 @@ class CategoryItem extends StatelessWidget {
           width: 65.w,
           child: Column(
             children: [
-              Image.asset(model.image),
+              Image.asset(model.image, height: 50.h,),
               verticalSpacing(5),
               Text(model.name, overflow: TextOverflow.ellipsis),
             ],
