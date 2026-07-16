@@ -50,4 +50,22 @@ class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
   );
+
+  static final TextStyle fontBlack14SemiBold = TextStyle(
+    color: AppColors.black,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  static final TextStyle fontGray14Medium = TextStyle(
+    color: AppColors.grayText,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  static final TextStyle fontRed12Regular = TextStyle(
+    color: AppColors.redError,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
 }
