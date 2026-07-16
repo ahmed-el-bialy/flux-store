@@ -7,8 +7,8 @@ import 'package:flux_store/core/widgets/app_navigation_bar.dart';
 import 'package:flux_store/core/widgets/app_text_form_field.dart';
 import 'package:flux_store/features/home/data/local/categories_data.dart';
 
-import '../../../core/theming/app_colors.dart';
-import '../../../core/theming/app_text_styles.dart';
+import '../../../../core/theming/app_colors.dart';
+import '../../../../core/theming/app_text_styles.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -80,7 +80,10 @@ class CategoriesScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                     splashColor: AppColors.blue.withValues(alpha: .2),
                     onTap: () {
-                      /// TODO implement tap functionality
+                      context.pushNamed(
+                        AppConstants.categoryProductsScreen,
+                        CategoriesData.categoryList[index].name.toLowerCase(),
+                      );
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

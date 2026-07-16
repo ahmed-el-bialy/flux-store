@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flux_store/core/networking/dio_factory.dart';
-import 'package:flux_store/features/categories/ui/categories_screen.dart';
+import 'package:flux_store/features/categories/ui/screens/categories_screen.dart';
+import 'package:flux_store/features/categories/ui/screens/category_products_screen.dart';
 import 'package:flux_store/features/details/data/repo/details_repo.dart';
 import 'package:flux_store/features/details/data/web_services/details_web_services.dart';
 import 'package:flux_store/features/details/logic/product_details_cubit.dart';
@@ -39,6 +40,11 @@ class AppRouter {
 
       case AppConstants.categoriesScreen:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+
+      case AppConstants.categoryProductsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CategoryProductsScreen(),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
