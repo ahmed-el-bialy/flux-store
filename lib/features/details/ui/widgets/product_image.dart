@@ -21,7 +21,7 @@ class ProductImage extends StatelessWidget {
         product.discountPercentage != null && product.discountPercentage! > 0;
 
     return Container(
-      height: 390.h,
+      height: 320.h,
       width: double.infinity,
       decoration: const BoxDecoration(color: AppColors.white),
       child: Stack(
@@ -51,7 +51,7 @@ class ProductImage extends StatelessWidget {
           ),
           if (hasDiscount)
             Positioned(
-              top: MediaQuery.of(context).padding.top + 70.h,
+              top: MediaQuery.of(context).padding.top,
               left: 28.w,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
