@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/core/constants/app_constants.dart';
 
 import '../helper/routing_extension.dart';
+import '../routing/route_names.dart';
 import '../theming/app_colors.dart';
 
 class AppNavigationBar extends StatelessWidget {
@@ -44,7 +44,7 @@ class AppNavigationBar extends StatelessWidget {
                     onTap: () {
                       if (activeIndex != 0) {
                         context.pushReplacementNamed(
-                          AppConstants.homeScreen,
+                          RouteNames.home,
                           null,
                         );
                       }
@@ -65,7 +65,7 @@ class AppNavigationBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.r),
                     onTap: () {
                       if (activeIndex != 1) {
-                        context.pushNamed(AppConstants.categoriesScreen, null);
+                        context.pushNamed(RouteNames.categories, null);
                       }
                     },
                     child: Padding(

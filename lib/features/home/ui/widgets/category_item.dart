@@ -4,6 +4,7 @@ import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/helper/routing_extension.dart';
 
 import '../../../../core/helper/spacing.dart';
+import '../../../../core/routing/route_names.dart';
 import '../../../categories/data/models/off_line_category_model.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -18,7 +19,7 @@ class CategoryItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           context.pushNamed(
-            AppConstants.categoryProductsScreen,
+            RouteNames.categoryProducts,
             model.name.toLowerCase(),
           );
         },

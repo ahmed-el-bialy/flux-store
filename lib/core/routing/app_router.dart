@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flux_store/core/networking/dio_factory.dart';
+import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/features/categories/ui/screens/categories_screen.dart';
 import 'package:flux_store/features/categories/ui/screens/category_products_screen.dart';
 import 'package:flux_store/features/details/data/repo/details_repo.dart';
@@ -15,12 +16,11 @@ import '../../features/categories/data/web_services/categories_web_services.dart
 import '../../features/categories/logic/products_by_category_cubit.dart';
 import '../../features/home/logic/get_all_products_cubit.dart';
 import '../../features/home/ui/home_screen.dart';
-import '../constants/app_constants.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings setting) {
     switch (setting.name) {
-      case AppConstants.homeScreen:
+      case RouteNames.home:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => GetAllProductsCubit(
@@ -30,7 +30,7 @@ class AppRouter {
           ),
         );
 
-      case AppConstants.detailsScreen:
+      case RouteNames.details:
         final arguments = setting.arguments as int;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -41,10 +41,10 @@ class AppRouter {
           ),
         );
 
-      case AppConstants.categoriesScreen:
+      case RouteNames.categories:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
 
-      case AppConstants.categoryProductsScreen:
+      case RouteNames.categoryProducts:
         final arguments = setting.arguments as String;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
