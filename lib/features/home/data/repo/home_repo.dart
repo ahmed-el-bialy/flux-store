@@ -1,5 +1,3 @@
-import 'package:flux_store/features/home/data/models/category_model.dart';
-
 import '../models/product_model.dart';
 import '../web_services/home_web_services.dart';
 
@@ -12,12 +10,6 @@ class HomeRepo {
     var response = await webServices.getAllProducts();
 
     return response.results ?? [];
-  }
-
-  Future<List<CategoryModel>> getAllCategories() async {
-    var response = await webServices.getAllCategories();
-
-    return response;
   }
 
   Future<List<ProductModel>> getProductsByCategory({
