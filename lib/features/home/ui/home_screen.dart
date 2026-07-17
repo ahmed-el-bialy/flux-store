@@ -5,7 +5,7 @@ import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/core/widgets/section_title.dart';
-import 'package:flux_store/features/home/data/local/categories_data.dart';
+import 'package:flux_store/features/categories/data/local/categories_data.dart';
 import 'package:flux_store/features/home/logic/get_all_products_cubit.dart';
 import 'package:flux_store/features/home/ui/widgets/category_item.dart';
 

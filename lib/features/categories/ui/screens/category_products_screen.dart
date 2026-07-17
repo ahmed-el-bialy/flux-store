@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flux_store/core/widgets/products_grid_view.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/theming/app_text_styles.dart';
 
 class CategoryProductsScreen extends StatelessWidget {
   const CategoryProductsScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,10 @@ class CategoryProductsScreen extends StatelessWidget {
             elevation: 0,
             pinned: true,
           ),
+
+          SliverToBoxAdapter(
+            // child: ProductsGridView(models: models),
+          )
         ],
       ),
     );

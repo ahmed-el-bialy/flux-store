@@ -1,4 +1,4 @@
-import 'package:flux_store/features/home/data/models/off_line_category_model.dart';
+import 'package:flux_store/features/categories/data/models/off_line_category_model.dart';
 class CategoriesData {
 
 static final List<OffLineCategoryModel> categoryList = [
