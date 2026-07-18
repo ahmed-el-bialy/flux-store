@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/helper/routing_extension.dart';
 
 import '../../../../core/helper/spacing.dart';

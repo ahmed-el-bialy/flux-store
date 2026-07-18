@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/core/constants/app_constants.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/route_names.dart';
