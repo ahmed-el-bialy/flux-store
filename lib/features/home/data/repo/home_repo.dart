@@ -11,5 +11,4 @@ class HomeRepo {
 
     return response.results ?? [];
   }
-
 }
