@@ -74,7 +74,10 @@ class CustomSearchDelegate extends SearchDelegate {
     }
     final currentQuery = query.trim();
     if (currentQuery == lastQuery) {
-      return BuildSearchResultsGrid(searchCubit: searchCubit);
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 8.h),
+        child: BuildSearchResultsGrid(searchCubit: searchCubit),
+      );
     }
 
     if (searchTimeResponse?.isActive ?? false) searchTimeResponse!.cancel();
@@ -84,6 +87,9 @@ class CustomSearchDelegate extends SearchDelegate {
       searchCubit.searchForProduct(query: query.trim());
     });
 
-    return BuildSearchResultsGrid(searchCubit: searchCubit);
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8.h),
+      child: BuildSearchResultsGrid(searchCubit: searchCubit),
+    );
   }
 }
