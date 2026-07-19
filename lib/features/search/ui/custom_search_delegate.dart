@@ -39,15 +39,14 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(context) {
     return [
-      IconButton(
-        onPressed: () {
-          query = '';
-        },
-        icon: Icon(Icons.clear, color: AppColors.blue),
-      ),
-      IconButton(
-        onPressed: () {},
-        icon: Icon(Icons.filter_alt, color: AppColors.black),
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: Icon(Icons.clear, color: AppColors.blue),
+        ),
       ),
     ];
   }

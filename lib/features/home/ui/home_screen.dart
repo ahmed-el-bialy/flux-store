@@ -38,14 +38,18 @@ class HomeScreen extends StatelessWidget {
             elevation: 0,
             pinned: true,
             actions: [
-              IconButton(
-                onPressed: () {
-                  final searchCubit = SearchCubit(searchRepo: SearchRepo(
-                      SearchWebServices(DioFactory.getDio())));
-                  showSearch(context: context,
-                      delegate: CustomSearchDelegate(searchCubit: searchCubit));
-                },
-                icon: Icon(Icons.search, size: 24.sp),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                child: IconButton(
+                  onPressed: () {
+                    final searchCubit = SearchCubit(searchRepo: SearchRepo(
+                        SearchWebServices(DioFactory.getDio())));
+                    showSearch(context: context,
+                        delegate: CustomSearchDelegate(
+                            searchCubit: searchCubit));
+                  },
+                  icon: Icon(Icons.search, size: 24.sp),
+                ),
               ),
             ],
           ),
