@@ -11,9 +11,4 @@ abstract class HomeWebServices {
 
   @GET(ApiConstants.allProducts)
   Future<ProductResponse> getAllProducts();
-
-  @GET("products/category/{category}")
-  Future<ProductResponse> getProductsByCategory(
-    @Path("category") String category,
-  );
 }
