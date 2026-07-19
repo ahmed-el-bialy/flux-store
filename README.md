@@ -75,7 +75,7 @@
 
 | 🏠 Home | 🔍 Search | 📂 Category |
 |:-------:|:---------:|:-----------:|
-| <img src="screenshots/HomeView.png" width="200"> | <img src="screenshots/SearchView.png" width="200"> | <img src="screenshots/Categoryprducots.png" width="200"> |
+| <img src="screenshots/HomeView.png" width="200"> | <img src="screenshots/SearchView.png" width="200"> | <img src="screenshots/CategoryProducts.png" width="200"> |
 | Browse all products | Search by category | Filtered products |
 
 | 📦 Product Details | ⭐ Reviews |
