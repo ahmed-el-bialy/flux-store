@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flux_store/core/widgets/loading_products_grid_view.dart';
-import 'package:flux_store/core/widgets/products_grid_view.dart';
+import 'package:flux_store/core/widgets/loading_products_sliver_grid_view.dart';
+import 'package:flux_store/core/widgets/products_sliver_grid_view.dart';
 import 'package:flux_store/features/categories/logic/products_by_category_cubit.dart';
 
 import '../../../../core/constants/app_constants.dart';
@@ -28,10 +28,10 @@ class CategoryProductsScreen extends StatelessWidget {
           BlocBuilder<ProductsByCategoryCubit, ProductsByCategoryState>(
             builder: (context, state) {
               if (state is ProductsByCategoryLoading) {
-                return LoadingProductsGridView();
+                return LoadingProductsSliverGridView();
               }
               if (state is ProductsByCategorySuccess) {
-                return ProductsGridView(models: state.products);
+                return ProductsSliverGridView(models: state.products);
               }
               if (state is ProductsByCategoryFailed) {
                 return SliverToBoxAdapter(

@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
+import 'package:flux_store/core/networking/dio_factory.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/core/widgets/section_title.dart';
 import 'package:flux_store/features/categories/data/local/categories_data.dart';
 import 'package:flux_store/features/home/logic/get_all_products_cubit.dart';
 import 'package:flux_store/features/home/ui/widgets/category_item.dart';
+import 'package:flux_store/features/search/data/repo/search_repo.dart';
+import 'package:flux_store/features/search/data/web_services/search_web_services.dart';
 import 'package:flux_store/features/search/ui/custom_search_delegate.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
-import '../../../core/widgets/loading_products_grid_view.dart';
-import '../../../core/widgets/products_grid_view.dart';
+import '../../../core/widgets/loading_products_sliver_grid_view.dart';
+import '../../../core/widgets/products_sliver_grid_view.dart';
+import '../../search/logic/search_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,7 +40,10 @@ class HomeScreen extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                 showSearch(context: context, delegate: CustomSearchDelegate());
+                  final searchCubit = SearchCubit(searchRepo: SearchRepo(
+                      SearchWebServices(DioFactory.getDio())));
+                  showSearch(context: context,
+                      delegate: CustomSearchDelegate(searchCubit: searchCubit));
                 },
                 icon: Icon(Icons.search, size: 24.sp),
               ),
@@ -70,10 +77,10 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<GetAllProductsCubit, GetAllProductsState>(
             builder: (context, state) {
               if (state is GetAllProductsLoading) {
-                return LoadingProductsGridView();
+                return LoadingProductsSliverGridView();
               }
               if (state is GetAllProductsLoadedSuccessfully) {
-                return ProductsGridView(models: state.products);
+                return ProductsSliverGridView(models: state.products);
               }
               if (state is GetAllProductsFailed) {
                 return SliverToBoxAdapter(

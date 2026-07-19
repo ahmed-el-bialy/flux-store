@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../features/home/data/models/product_model.dart';
-import 'product_card.dart';
+import '../../../../core/widgets/product_card.dart';
+import '../../../home/data/models/product_model.dart';
 
 class ProductsGridView extends StatelessWidget {
   const ProductsGridView({super.key, required this.models});
@@ -10,7 +10,7 @@ class ProductsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid.builder(
+    return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 0.57,
         crossAxisCount: 2,

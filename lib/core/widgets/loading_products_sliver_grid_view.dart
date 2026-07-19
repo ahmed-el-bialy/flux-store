@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flux_store/core/widgets/loading_card.dart';
 
-class LoadingProductsGridView extends StatelessWidget {
-  const LoadingProductsGridView({super.key});
+class LoadingProductsSliverGridView extends StatelessWidget {
+  const LoadingProductsSliverGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
