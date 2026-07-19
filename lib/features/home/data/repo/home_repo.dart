@@ -12,11 +12,4 @@ class HomeRepo {
     return response.results ?? [];
   }
 
-  Future<List<ProductModel>> getProductsByCategory({
-    required String category,
-  }) async {
-    var response = await webServices.getProductsByCategory(category);
-
-    return response.results ?? [];
-  }
 }
