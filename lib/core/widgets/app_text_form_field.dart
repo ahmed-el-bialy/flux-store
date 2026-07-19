@@ -22,6 +22,7 @@ class AppTextFormField extends StatelessWidget {
     this.textInputAction,
     this.controller,
     this.validator,
+    this.onChanged,
   });
 
   final EdgeInsetsGeometry? contentPadding;
@@ -40,6 +41,7 @@ class AppTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextEditingController? controller;
   final FormFieldValidator<String>? validator;
+  final FormFieldValidator<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +106,7 @@ class AppTextFormField extends StatelessWidget {
         errorStyle: TextStyle(fontSize: 12.sp, color: AppColors.redFavorite),
       ),
       validator: validator,
+      onChanged: onChanged,
     );
   }
 }

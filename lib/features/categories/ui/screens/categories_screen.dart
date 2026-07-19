@@ -3,16 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
-import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/widgets/app_navigation_bar.dart';
 import 'package:flux_store/core/widgets/app_text_form_field.dart';
 import 'package:flux_store/features/categories/data/local/categories_data.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
+import '../widgets/categories_grid_view.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({super.key});
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
+  List filteredCategories = List.from(CategoriesData.categoryList);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,7 @@ class CategoriesScreen extends StatelessWidget {
               onPressed: () {
                 context.pop();
               },
-              icon: Icon(Icons.arrow_back_rounded),
+              icon: const Icon(Icons.arrow_back_rounded),
             ),
           ),
 
@@ -62,52 +69,43 @@ class CategoriesScreen extends StatelessWidget {
                   size: 24.sp,
                   color: AppColors.grayText,
                 ),
+                onChanged: (value) {
+                  setState(() {
+                    if (value == null && value!.isEmpty) {
+                      filteredCategories = List.from(
+                        CategoriesData.categoryList,
+                      );
+                    } else {
+                      filteredCategories = CategoriesData.categoryList
+                          .where(
+                            (category) => category.name.toLowerCase().contains(
+                              value.toLowerCase(),
+                            ),
+                          )
+                          .toList();
+                    }
+                  });
+                  return null;
+                },
               ),
             ),
           ),
 
           sliverVerticalSpacing(15),
 
-          SliverGrid.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: CategoriesData.categoryList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 5.w),
-                child: Card(
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(12.r),
-                    splashColor: AppColors.blue.withValues(alpha: .2),
-                    onTap: () {
-                      context.pushNamed(
-                        RouteNames.categoryProducts,
-                        CategoriesData.categoryList[index].name.toLowerCase(),
-                      );
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          CategoriesData.categoryList[index].image,
-                          height: 50.h,
-                        ),
-
-                        verticalSpacing(10),
-
-                        Text(
-                          CategoriesData.categoryList[index].name,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppTextStyles.fontBlack14SemiBold,
-                        ),
-                      ],
+          filteredCategories.isEmpty
+              ? const SliverToBoxAdapter(
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 40.0),
+                      child: Text(
+                        "No categories found!",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
+                )
+              : CategoriesGridView(filteredCategories: filteredCategories),
 
           sliverVerticalSpacing(70),
         ],
