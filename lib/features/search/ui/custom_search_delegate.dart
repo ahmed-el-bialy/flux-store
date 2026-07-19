@@ -75,7 +75,7 @@ class CustomSearchDelegate extends SearchDelegate {
     final currentQuery = query.trim();
     if (currentQuery == lastQuery) {
       return Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h),
+        padding: EdgeInsets.symmetric(vertical: 6.h),
         child: BuildSearchResultsGrid(searchCubit: searchCubit),
       );
     }
@@ -88,7 +88,7 @@ class CustomSearchDelegate extends SearchDelegate {
     });
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 6.h),
       child: BuildSearchResultsGrid(searchCubit: searchCubit),
     );
   }
