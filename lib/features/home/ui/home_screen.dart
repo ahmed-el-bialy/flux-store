@@ -8,6 +8,7 @@ import 'package:flux_store/core/widgets/section_title.dart';
 import 'package:flux_store/features/categories/data/local/categories_data.dart';
 import 'package:flux_store/features/home/logic/get_all_products_cubit.dart';
 import 'package:flux_store/features/home/ui/widgets/category_item.dart';
+import 'package:flux_store/features/search/ui/custom_search_delegate.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  /// TODO: implement search functionality
+                 showSearch(context: context, delegate: CustomSearchDelegate());
                 },
                 icon: Icon(Icons.search, size: 24.sp),
               ),
