@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flux_store/core/networking/dio_factory.dart';
 import 'package:flux_store/core/routing/route_names.dart';
+import 'package:flux_store/features/auth/ui/log_in_screen.dart';
 import 'package:flux_store/features/categories/ui/screens/categories_screen.dart';
 import 'package:flux_store/features/categories/ui/screens/category_products_screen.dart';
 import 'package:flux_store/features/details/data/repo/details_repo.dart';
@@ -43,6 +44,8 @@ class AppRouter {
 
       case RouteNames.categories:
         return MaterialPageRoute(builder: (_) => const CategoriesScreen());
+      case RouteNames.signIn:
+        return MaterialPageRoute(builder: (_) => const LogInScreen());
 
       case RouteNames.categoryProducts:
         final arguments = setting.arguments as String;

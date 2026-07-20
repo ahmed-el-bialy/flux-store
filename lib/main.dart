@@ -22,7 +22,7 @@ class VibrantStoreApp extends StatelessWidget {
       ensureScreenSize: true,
       builder: (_, child) {
         return MaterialApp(
-          initialRoute: RouteNames.home,
+          initialRoute: RouteNames.signIn,
           onGenerateRoute: appRouter.generateRoute,
           debugShowCheckedModeBanner: false,
         );
