@@ -8,11 +8,13 @@ class BuildSocialButton extends StatelessWidget {
     required this.logoPath,
     required this.backgroundColor,
     required this.onTap,
+    this.isDisabled = false,
   });
 
   final String logoPath;
   final Color backgroundColor;
   final VoidCallback onTap;
+  final bool isDisabled;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class BuildSocialButton extends StatelessWidget {
         color: backgroundColor,
         borderRadius: BorderRadius.circular(15.r),
         child: InkWell(
-          onTap: onTap,
+          onTap: isDisabled ? null : onTap,
           borderRadius: BorderRadius.circular(15.r),
           child: Ink(
             padding: EdgeInsets.all(10.r),
@@ -30,11 +32,14 @@ class BuildSocialButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.r),
               border: Border.all(color: AppColors.borderGray),
             ),
-            child: Image.asset(
-              logoPath,
-              width: 18.w,
-              height: 18.h,
-              color: Colors.black,
+            child: Opacity(
+              opacity: isDisabled ? 0.5 : 1,
+              child: Image.asset(
+                logoPath,
+                width: 18.w,
+                height: 18.h,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
