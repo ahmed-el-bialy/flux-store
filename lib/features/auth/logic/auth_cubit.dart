@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../data/models/login_response_model.dart';
+import '../data/models/social_provider.dart';
 import '../data/repo/auth_repo.dart';
 
 part 'auth_state.dart';
@@ -33,6 +34,16 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final user = await authRepo.register(email: email, password: password);
+      emit(AuthSuccess(user));
+    } catch (e) {
+      emit(AuthError(e.toString().replaceAll('Exception: ', '')));
+    }
+  }
+
+  Future<void> socialLogin({required SocialProvider provider}) async {
+    emit(AuthLoading());
+    try {
+      final user = await authRepo.socialLogin(provider: provider);
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthError(e.toString().replaceAll('Exception: ', '')));
