@@ -1,5 +1,6 @@
 import '../../../../core/helper/shared_prefs_helper.dart';
 import '../models/login_response_model.dart';
+import '../models/social_provider.dart';
 import '../web_services/auth_api_service.dart';
 
 class AuthRepo {
@@ -112,6 +113,63 @@ class AuthRepo {
     await SharedPrefsHelper.saveUser(loggedInUser);
 
     return loggedInUser;
+  }
+
+  Future<LoginResponseModel> socialLogin({
+    required SocialProvider provider,
+  }) async {
+    final providerKey = provider.name;
+
+    final savedSocialUser = SharedPrefsHelper.getSocialUser(providerKey);
+    if (savedSocialUser != null) {
+      await SharedPrefsHelper.saveToken(savedSocialUser.token);
+      await SharedPrefsHelper.saveUser(savedSocialUser);
+      return savedSocialUser;
+    }
+
+    final profile = _demoProfileFor(provider);
+    final token = 'social-${provider.name}-token';
+    profile['token'] = token;
+
+    final user = LoginResponseModel.fromJson(profile);
+
+    await SharedPrefsHelper.saveSocialUser(providerKey, user);
+    await SharedPrefsHelper.saveToken(token);
+    await SharedPrefsHelper.saveUser(user);
+
+    return user;
+  }
+
+  Map<String, dynamic> _demoProfileFor(SocialProvider provider) {
+    return switch (provider) {
+      SocialProvider.google => {
+        'id': 1001,
+        'username': 'google_user',
+        'email': 'google.user@gmail.com',
+        'firstName': 'Google',
+        'lastName': 'User',
+        'gender': 'unknown',
+        'image': 'https://dummyjson.com/icon/google_user/128',
+      },
+      SocialProvider.facebook => {
+        'id': 1002,
+        'username': 'facebook_user',
+        'email': 'facebook.user@gmail.com',
+        'firstName': 'Facebook',
+        'lastName': 'User',
+        'gender': 'unknown',
+        'image': 'https://dummyjson.com/icon/facebook_user/128',
+      },
+      SocialProvider.apple => {
+        'id': 1003,
+        'username': 'apple_user',
+        'email': 'apple.user@icloud.com',
+        'firstName': 'Apple',
+        'lastName': 'User',
+        'gender': 'unknown',
+        'image': 'https://dummyjson.com/icon/apple_user/128',
+      },
+    };
   }
 
   LoginResponseModel? getSavedUser() {

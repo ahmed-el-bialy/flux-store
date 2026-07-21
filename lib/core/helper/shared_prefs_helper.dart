@@ -12,6 +12,7 @@ class SharedPrefsHelper {
   static const String _keyToken = 'auth_token';
   static const String _keyUser = 'auth_user';
   static const String _keyLocalUsers = 'local_users';
+  static const String _keySocialUsers = 'social_users';
 
   static Future<void> saveToken(String token) async {
     await _sharedPreferences?.setString(_keyToken, token);
@@ -56,6 +57,41 @@ class SharedPrefsHelper {
 
   static Map<String, dynamic> getLocalUsers() {
     final jsonStr = _sharedPreferences?.getString(_keyLocalUsers);
+    if (jsonStr == null) return {};
+    try {
+      return jsonDecode(jsonStr) as Map<String, dynamic>;
+    } catch (_) {
+      return {};
+    }
+  }
+
+  static Future<void> saveSocialUser(
+    String providerKey,
+    LoginResponseModel user,
+  ) async {
+    final socialUsers = getSocialUsers();
+    socialUsers[providerKey] = user.toJson();
+    await _sharedPreferences?.setString(
+      _keySocialUsers,
+      jsonEncode(socialUsers),
+    );
+  }
+
+  static LoginResponseModel? getSocialUser(String providerKey) {
+    final socialUsers = getSocialUsers();
+    final userJson = socialUsers[providerKey];
+    if (userJson == null) return null;
+    try {
+      return LoginResponseModel.fromJson(
+        Map<String, dynamic>.from(userJson as Map),
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Map<String, dynamic> getSocialUsers() {
+    final jsonStr = _sharedPreferences?.getString(_keySocialUsers);
     if (jsonStr == null) return {};
     try {
       return jsonDecode(jsonStr) as Map<String, dynamic>;
