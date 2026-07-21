@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
-import 'package:flux_store/features/auth/ui/widgets/build_social_button.dart';
+import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
 
 import '../../../core/helper/routing_extension.dart';
 import '../../../core/helper/spacing.dart';
@@ -206,26 +206,9 @@ class _LogInScreenState extends State<LogInScreen> {
                       ],
                     ),
                     verticalSpacing(25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        BuildSocialButton(
-                          logoPath: "assets/images/google_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                        BuildSocialButton(
-                          logoPath: "assets/images/facebook_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                        BuildSocialButton(
-                          logoPath: "assets/images/apple_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                      ],
-                    ),
+
+                    SocialButtonsRow(),
+
                     verticalSpacing(15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

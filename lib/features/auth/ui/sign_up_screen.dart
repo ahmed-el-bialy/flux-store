@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
-import 'package:flux_store/features/auth/ui/widgets/build_social_button.dart';
+import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/helper/validators.dart';
@@ -184,26 +184,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                     verticalSpacing(20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        BuildSocialButton(
-                          logoPath: "assets/images/google_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                        BuildSocialButton(
-                          logoPath: "assets/images/facebook_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                        BuildSocialButton(
-                          logoPath: "assets/images/apple_logo.png",
-                          backgroundColor: AppColors.fieldBgGray,
-                          onTap: () {},
-                        ),
-                      ],
-                    ),
+
+                    SocialButtonsRow(),
+
                     verticalSpacing(20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
