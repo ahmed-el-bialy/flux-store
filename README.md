@@ -354,6 +354,48 @@ flutter build ios --release      # iOS
 
 ---
 
+## 🔐 Authentication
+
+Flux Store includes a full authentication flow built on top of [DummyJSON Auth API](https://dummyjson.com/docs/auth).
+
+### Flows
+
+| Flow | Description |
+|:-----|:------------|
+| **Login** | Email/password against locally registered users or DummyJSON accounts |
+| **Signup** | Registers via `POST /users/add` and stores credentials locally |
+| **Social Login** | Google, Facebook, and Apple buttons create a persisted demo profile (DummyJSON has no OAuth endpoints) |
+| **Profile** | Shows user info when authenticated; guest view with login/signup CTAs |
+| **Session** | Token + user cached in `SharedPreferences`; restored on app launch |
+
+### Architecture
+
+```
+UI (Login / SignUp / Profile)
+        │
+        ▼
+   AuthCubit  ──▶  AuthRepo  ──▶  AuthApiService (DummyJSON)
+        │                │
+        │                └──▶  SharedPrefsHelper (token, user, local users, social users)
+        ▼
+   AuthState (Initial / Loading / Success / Error / Unauthenticated)
+```
+
+### Security Considerations
+
+- Locally registered passwords are stored in plain text in `SharedPreferences` — acceptable for demo/course use only.
+- DummyJSON JWT tokens expire after 60 minutes; social/demo tokens are mock strings.
+- For production, replace with a real backend, hashed passwords, and OAuth SDKs (`google_sign_in`, `sign_in_with_apple`).
+
+### Test Accounts (DummyJSON)
+
+| Username | Password |
+|:---------|:---------|
+| `emilys` | `emilyspass` |
+| `atuny0` | `9uQFF1Lh` |
+
+---
+
 ## ⚠️ Known Limitations
 
 | Issue | Details | Status |
@@ -362,7 +404,9 @@ flutter build ios --release      # iOS
 | Cart not implemented | Button exists in UI only | 🔧 Planned |
 | No pagination | All products load at once | 🔧 Planned |
 | Manual JSON parsing | No code generation | ✅ By design |
-| Profile screen placeholder | Icon exists but not functional | 🔧 Planned |
+| Profile screen placeholder | Icon exists but not functional | ✅ Done |
+| Social login simulated | Uses local demo profiles (DummyJSON has no OAuth) | ✅ By design |
+| Forgot password | Button exists but not functional | 🔧 Planned |
 
 ---
 
@@ -371,7 +415,7 @@ flutter build ios --release      # iOS
 - [ ] **Persist favorites** with Hive or SharedPreferences
 - [ ] **Implement cart** with quantity management
 - [ ] **Add product search** by name (not just category)
-- [ ] **User authentication** with profiles
+- **User authentication** with profiles, login, signup, and social sign-in
 - [ ] **Offline caching** with Dio interceptors
 - [ ] **State management** migration (Provider / Riverpod / Bloc)
 - [ ] **Image caching** with cached_network_image
