@@ -7,6 +7,7 @@ import 'package:flux_store/features/auth/ui/widgets/build_social_button.dart';
 
 import '../../../core/helper/routing_extension.dart';
 import '../../../core/helper/spacing.dart';
+import '../../../core/helper/validators.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
 
@@ -117,6 +118,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         size: 20.sp,
                         color: AppColors.grayText.withValues(alpha: 0.6),
                       ),
+                      validator: Validators.validateEmail,
                     ),
                     verticalSpacing(20),
                     Row(
@@ -151,6 +153,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         size: 20.sp,
                         color: AppColors.grayText.withValues(alpha: 0.6),
                       ),
+                      validator: Validators.validatePassword,
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {

@@ -5,6 +5,7 @@ import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/features/auth/ui/widgets/build_social_button.dart';
 
 import '../../../core/helper/spacing.dart';
+import '../../../core/helper/validators.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
 
@@ -78,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         size: 22.sp,
                         color: AppColors.grayText,
                       ),
-                      // validator: Validators.validateEmail,
+                      validator: Validators.validateEmail,
                     ),
                     verticalSpacing(20),
                     Align(
@@ -112,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: AppColors.grayText,
                         ),
                       ),
-                      // validator: Validators.validatePassword,
+                      validator: Validators.validatePassword,
                     ),
                     verticalSpacing(20),
                     Align(
@@ -144,6 +145,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           size: 22.sp,
                           color: AppColors.grayText,
                         ),
+                      ),
+                      validator: (value) => Validators.validateConfirmPassword(
+                        value,
+                        password: passwordController.text,
                       ),
                     ),
                     verticalSpacing(35),
