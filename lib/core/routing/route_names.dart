@@ -5,4 +5,5 @@ abstract class RouteNames {
   static const details = "/details";
   static const categories = "/categories";
   static const categoryProducts = "/categoryProducts";
+  static const profile = "/profile";
 }

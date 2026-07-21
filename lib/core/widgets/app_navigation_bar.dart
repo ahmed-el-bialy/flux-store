@@ -103,7 +103,7 @@ class AppNavigationBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.r),
                     onTap: () {
                       if (activeIndex != 3) {
-                        // context.pushReplacementNamed(Strings.profileScreen, null);
+                        context.pushReplacementNamed(RouteNames.profile, null);
                       }
                     },
                     child: Padding(
