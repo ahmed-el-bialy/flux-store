@@ -1,56 +1,37 @@
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../models/login_response_model.dart';
 
-class AuthApiService {
-  final Dio dio;
+part 'auth_api_service.g.dart';
 
-  AuthApiService(this.dio);
+@RestApi(baseUrl: 'https://dummyjson.com/')
+abstract class AuthApiService {
+  factory AuthApiService(Dio dio, {String? baseUrl}) = _AuthApiService;
 
+  @POST('auth/login')
   Future<LoginResponseModel> login({
-    required String username,
-    required String password,
-  }) async {
-    final response = await dio.post(
-      'https://dummyjson.com/auth/login',
-      data: {'username': username, 'password': password, 'expiresInMins': 60},
-    );
-    return LoginResponseModel.fromJson(response.data);
-  }
+    @Field('username') required String username,
+    @Field('password') required String password,
+    @Field('expiresInMins') int expiresInMins = 60,
+  });
 
-  Future<Map<String, dynamic>> register({
-    required String email,
-    required String password,
-    required String username,
-    required String firstName,
-    required String lastName,
-  }) async {
-    final response = await dio.post(
-      'https://dummyjson.com/users/add',
-      data: {
-        'email': email,
-        'password': password,
-        'username': username,
-        'firstName': firstName,
-        'lastName': lastName,
-      },
-    );
-    return response.data;
-  }
+  @POST('users/add')
+  Future<HttpResponse<dynamic>> register({
+    @Field('email') required String email,
+    @Field('password') required String password,
+    @Field('username') required String username,
+    @Field('firstName') required String firstName,
+    @Field('lastName') required String lastName,
+  });
 
-  Future<List<dynamic>> searchUserByEmail(String email) async {
-    final response = await dio.get(
-      'https://dummyjson.com/users/search',
-      queryParameters: {'q': email},
-    );
-    return response.data['users'] ?? [];
-  }
+  @GET('users/search')
+  Future<HttpResponse<dynamic>> searchUserByEmail({
+    @Query('q') required String email,
+  });
 
-  Future<LoginResponseModel> getProfile(String token) async {
-    final response = await dio.get(
-      'https://dummyjson.com/auth/me',
-      options: Options(headers: {'Authorization': 'Bearer $token'}),
-    );
-    return LoginResponseModel.fromJson(response.data);
-  }
+  @GET('auth/me')
+  Future<LoginResponseModel> getProfile({
+    @Header('Authorization') required String token,
+  });
 }

@@ -14,7 +14,6 @@ class AuthRepo {
   }) async {
     final cleanEmail = email.trim().toLowerCase();
 
-    // 1. Check local registered users (from signups on this device)
     final localUsers = SharedPrefsHelper.getLocalUsers();
     if (localUsers.containsKey(cleanEmail)) {
       final localUser = localUsers[cleanEmail];
@@ -25,7 +24,6 @@ class AuthRepo {
         details['token'] = mockToken;
         final user = LoginResponseModel.fromJson(details);
 
-        // Save session
         await SharedPrefsHelper.saveToken(mockToken);
         await SharedPrefsHelper.saveUser(user);
         return user;
@@ -34,13 +32,14 @@ class AuthRepo {
       }
     }
 
-    // 2. Query DummyJSON by email to map to their username
-    final apiUsers = await apiService.searchUserByEmail(cleanEmail);
+    final httpResponse = await apiService.searchUserByEmail(email: cleanEmail);
+    final responseData = httpResponse.data as Map<String, dynamic>;
+    final List<dynamic> apiUsers = responseData['users'] ?? [];
+
     if (apiUsers.isEmpty) {
       throw Exception('No user found with this email.');
     }
 
-    // Find user by exact email match
     var matchingUserJson = apiUsers.firstWhere(
       (u) =>
           u['email'] != null &&
@@ -54,13 +53,11 @@ class AuthRepo {
 
     final String username = matchingUserJson['username'];
 
-    // 3. Login to DummyJSON
     final loggedInUser = await apiService.login(
       username: username,
       password: password,
     );
 
-    // Save session
     await SharedPrefsHelper.saveToken(loggedInUser.token);
     await SharedPrefsHelper.saveUser(loggedInUser);
 
@@ -81,8 +78,7 @@ class AuthRepo {
     const String firstName = 'New';
     const String lastName = 'User';
 
-    // Call DummyJSON register simulator
-    final responseData = await apiService.register(
+    final httpResponse = await apiService.register(
       email: cleanEmail,
       password: password,
       username: username,
@@ -90,7 +86,8 @@ class AuthRepo {
       lastName: lastName,
     );
 
-    // Prepare profile fields with fallback values
+    final responseData = httpResponse.data as Map<String, dynamic>;
+
     final userDetails = {
       'id': responseData['id'] ?? 999,
       'username': username,
@@ -101,10 +98,8 @@ class AuthRepo {
       'image': 'https://dummyjson.com/icon/$username/128',
     };
 
-    // Save registered user locally
     await SharedPrefsHelper.saveLocalUser(cleanEmail, password, userDetails);
 
-    // Automatically log in the user after registering
     final mockToken = 'mock-jwt-token-$cleanEmail';
     userDetails['token'] = mockToken;
     final loggedInUser = LoginResponseModel.fromJson(userDetails);
