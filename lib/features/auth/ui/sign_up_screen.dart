@@ -93,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpacing(8),
                     AppTextFormField(
                       controller: passwordController,
-                      hintText: AppConstants.passwordExample,
+                      hintText: AppConstants.signUpPasswordHint,
                       isObscureText: isObscure,
                       prefixIcon: Icon(
                         Icons.lock_outline_rounded,
@@ -126,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     verticalSpacing(8),
                     AppTextFormField(
-                      hintText: AppConstants.passwordExample,
+                      hintText: AppConstants.signUpPasswordHint,
                       isObscureText: isConfirmObscure,
                       prefixIcon: Icon(
                         Icons.lock_clock_outlined,

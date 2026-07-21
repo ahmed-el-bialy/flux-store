@@ -153,7 +153,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       controller: passwordController,
                       inputType: TextInputType.text,
                       textInputAction: TextInputAction.done,
-                      hintText: AppConstants.passwordExample,
+                      hintText: AppConstants.logInPasswordExample,
                       isObscureText: isObscure,
                       prefixIcon: Icon(
                         Icons.lock_outline_rounded,
