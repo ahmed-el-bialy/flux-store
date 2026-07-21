@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
+import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
+import 'package:flux_store/features/auth/logic/auth_cubit.dart';
 import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
 
 import '../../../core/helper/spacing.dart';
@@ -33,190 +36,228 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    verticalSpacing(5),
-                    Icon(
-                      Icons.shopping_bag_outlined,
-                      size: 85.sp,
-                      color: AppColors.blue,
-                    ),
-                    verticalSpacing(10),
-                    Text(
-                      "Create Account",
-                      style: AppTextStyles.fontBlack24Bold,
-                    ),
-                    verticalSpacing(4),
-                    Text(
-                      "Join the premiere community for shopping lovers.",
-                      style: AppTextStyles.fontGray14Regular,
-                      textAlign: TextAlign.center,
-                    ),
-                    verticalSpacing(25),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Email Address",
-                        style: AppTextStyles.fontBlack14SemiBold,
-                      ),
-                    ),
-                    verticalSpacing(8),
-                    AppTextFormField(
-                      controller: emailController,
-                      hintText: AppConstants.emailExample,
-                      prefixIcon: Icon(
-                        Icons.email_outlined,
-                        size: 22.sp,
-                        color: AppColors.grayText,
-                      ),
-                      validator: Validators.validateEmail,
-                    ),
-                    verticalSpacing(12),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Password",
-                        style: AppTextStyles.fontBlack14SemiBold,
-                      ),
-                    ),
-                    verticalSpacing(8),
-                    AppTextFormField(
-                      controller: passwordController,
-                      hintText: AppConstants.signUpPasswordHint,
-                      isObscureText: isObscure,
-                      prefixIcon: Icon(
-                        Icons.lock_outline_rounded,
-                        size: 22.sp,
-                        color: AppColors.grayText,
-                      ),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isObscure = !isObscure;
-                          });
-                        },
-                        child: Icon(
-                          isObscure
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                          size: 22.sp,
-                          color: AppColors.grayText,
-                        ),
-                      ),
-                      validator: Validators.validatePassword,
-                    ),
-                    verticalSpacing(15),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Confirm Password",
-                        style: AppTextStyles.fontBlack14SemiBold,
-                      ),
-                    ),
-                    verticalSpacing(8),
-                    AppTextFormField(
-                      hintText: AppConstants.signUpPasswordHint,
-                      isObscureText: isConfirmObscure,
-                      prefixIcon: Icon(
-                        Icons.lock_clock_outlined,
-                        size: 22.sp,
-                        color: AppColors.grayText,
-                      ),
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isConfirmObscure = !isConfirmObscure;
-                          });
-                        },
-                        child: Icon(
-                          isConfirmObscure
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                          size: 22.sp,
-                          color: AppColors.grayText,
-                        ),
-                      ),
-                      validator: (value) => Validators.validateConfirmPassword(
-                        value,
-                        password: passwordController.text,
-                      ),
-                    ),
-                    verticalSpacing(35),
-                    AppTextButton(
-                      buttonText: "Sign Up",
-                      textStyle: AppTextStyles.fontWhite16Bold,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
-                      },
-                    ),
-                    verticalSpacing(25),
-                    Row(
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Account created successfully! Welcome!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RouteNames.home,
+            (route) => false,
+          );
+        } else if (state is AuthError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: AppColors.redError,
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            backgroundColor: AppColors.white,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.borderGray,
-                            thickness: 1,
-                          ),
+                        verticalSpacing(5),
+                        Icon(
+                          Icons.shopping_bag_outlined,
+                          size: 85.sp,
+                          color: AppColors.blue,
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: Text(
-                            "OR CONTINUE WITH",
-                            style: AppTextStyles.fontBlue11Bold,
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.borderGray,
-                            thickness: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    verticalSpacing(20),
-
-                    SocialButtonsRow(),
-
-                    verticalSpacing(20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                        verticalSpacing(10),
                         Text(
-                          "Already have an account? ",
-                          style: AppTextStyles.fontGray14Medium,
+                          "Create Account",
+                          style: AppTextStyles.fontBlack24Bold,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
+                        verticalSpacing(4),
+                        Text(
+                          "Join the premiere community for shopping lovers.",
+                          style: AppTextStyles.fontGray14Regular,
+                          textAlign: TextAlign.center,
+                        ),
+                        verticalSpacing(25),
+                        Align(
+                          alignment: Alignment.centerLeft,
                           child: Text(
-                            "Login",
-                            style: AppTextStyles.fontBlue14Medium.copyWith(
-                              fontWeight: FontWeight.bold,
+                            "Email Address",
+                            style: AppTextStyles.fontBlack14SemiBold,
+                          ),
+                        ),
+                        verticalSpacing(8),
+                        AppTextFormField(
+                          controller: emailController,
+                          hintText: AppConstants.emailExample,
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            size: 22.sp,
+                            color: AppColors.grayText,
+                          ),
+                          validator: Validators.validateEmail,
+                        ),
+                        verticalSpacing(12),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Password",
+                            style: AppTextStyles.fontBlack14SemiBold,
+                          ),
+                        ),
+                        verticalSpacing(8),
+                        AppTextFormField(
+                          controller: passwordController,
+                          hintText: AppConstants.signUpPasswordHint,
+                          isObscureText: isObscure,
+                          prefixIcon: Icon(
+                            Icons.lock_outline_rounded,
+                            size: 22.sp,
+                            color: AppColors.grayText,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            },
+                            child: Icon(
+                              isObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              size: 22.sp,
+                              color: AppColors.grayText,
                             ),
                           ),
+                          validator: Validators.validatePassword,
                         ),
+                        verticalSpacing(15),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Confirm Password",
+                            style: AppTextStyles.fontBlack14SemiBold,
+                          ),
+                        ),
+                        verticalSpacing(8),
+                        AppTextFormField(
+                          hintText: AppConstants.signUpPasswordHint,
+                          isObscureText: isConfirmObscure,
+                          prefixIcon: Icon(
+                            Icons.lock_clock_outlined,
+                            size: 22.sp,
+                            color: AppColors.grayText,
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isConfirmObscure = !isConfirmObscure;
+                              });
+                            },
+                            child: Icon(
+                              isConfirmObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              size: 22.sp,
+                              color: AppColors.grayText,
+                            ),
+                          ),
+                          validator:
+                              (value) => Validators.validateConfirmPassword(
+                                value,
+                                password: passwordController.text,
+                              ),
+                        ),
+                        verticalSpacing(35),
+                        state is AuthLoading
+                            ? const Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.blue,
+                              ),
+                            )
+                            : AppTextButton(
+                              buttonText: "Sign Up",
+                              textStyle: AppTextStyles.fontWhite16Bold,
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  context.read<AuthCubit>().signUp(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                }
+                              },
+                            ),
+                        verticalSpacing(25),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: AppColors.borderGray,
+                                thickness: 1,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 12.w),
+                              child: Text(
+                                "OR CONTINUE WITH",
+                                style: AppTextStyles.fontBlue11Bold,
+                              ),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: AppColors.borderGray,
+                                thickness: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                        verticalSpacing(20),
+
+                        SocialButtonsRow(),
+
+                        verticalSpacing(20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account? ",
+                              style: AppTextStyles.fontGray14Medium,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Login",
+                                style: AppTextStyles.fontBlue14Medium.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        verticalSpacing(10),
                       ],
                     ),
-                    verticalSpacing(10),
-                  ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
