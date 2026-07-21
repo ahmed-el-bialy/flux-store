@@ -30,10 +30,9 @@ class VibrantStoreApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (context) => AuthCubit(
-            authRepo: AuthRepo(AuthApiService(DioFactory.getDio())),
-          )..checkSession(),
+      create: (context) =>
+          AuthCubit(authRepo: AuthRepo(AuthApiService(DioFactory.getDio())))
+            ..checkSession(),
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,

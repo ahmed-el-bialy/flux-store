@@ -12,7 +12,7 @@ import 'package:flux_store/features/details/logic/product_details_cubit.dart';
 import 'package:flux_store/features/details/ui/details_screen.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
 import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
-import 'package:flux_store/features/profile/ui/profile_screen.dart';
+import 'package:flux_store/features/profile/ui/screens/profile_screen.dart';
 
 import '../../features/categories/data/repo/categories_repo.dart';
 import '../../features/categories/data/web_services/categories_web_services.dart';
