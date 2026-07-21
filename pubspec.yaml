@@ -63,6 +63,7 @@ dependencies:
   get_it: ^9.2.1
   # Flutter widgets that make it easy to implement the Bloc (Business Logic Component) design pattern.
   flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
