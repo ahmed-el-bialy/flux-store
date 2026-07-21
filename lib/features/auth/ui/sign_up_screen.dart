@@ -45,7 +45,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    verticalSpacing(20),
+                    verticalSpacing(5),
                     Icon(
                       Icons.shopping_bag_outlined,
                       size: 85.sp,
@@ -81,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       validator: Validators.validateEmail,
                     ),
-                    verticalSpacing(20),
+                    verticalSpacing(12),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -115,7 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       validator: Validators.validatePassword,
                     ),
-                    verticalSpacing(20),
+                    verticalSpacing(15),
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -208,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ],
                     ),
-                    verticalSpacing(20),
+                    verticalSpacing(10),
                   ],
                 ),
               ),
