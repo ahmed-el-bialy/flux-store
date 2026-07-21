@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
+import 'package:flux_store/features/auth/logic/auth_cubit.dart';
 import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
 
 import '../../../core/constants/app_constants.dart';
@@ -34,219 +36,263 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    verticalSpacing(10),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Material(
-                        color: AppColors.fieldBgGray,
-                        borderRadius: BorderRadius.circular(20.r),
-                        child: InkWell(
-                          onTap: () {
-                            context.pushNamed(RouteNames.home, null);
-                          },
-                          borderRadius: BorderRadius.circular(20.r),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 20.w,
-                              vertical: 8.h,
-                            ),
-                            child: Text(
-                              "Skip",
-                              style: AppTextStyles.fontGray14Medium.copyWith(
-                                fontSize: 13.sp,
-                                color: AppColors.grayText.withValues(
-                                  alpha: 0.7,
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Welcome back, ${state.user.firstName}!'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RouteNames.home,
+            (route) => false,
+          );
+        } else if (state is AuthError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.message),
+              backgroundColor: AppColors.redError,
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            backgroundColor: AppColors.white,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        verticalSpacing(10),
+                        Align(
+                          alignment: Alignment.topRight,
+                          child: Material(
+                            color: AppColors.fieldBgGray,
+                            borderRadius: BorderRadius.circular(20.r),
+                            child: InkWell(
+                              onTap: () {
+                                context.pushNamed(RouteNames.home, null);
+                              },
+                              borderRadius: BorderRadius.circular(20.r),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 20.w,
+                                  vertical: 8.h,
+                                ),
+                                child: Text(
+                                  "Skip",
+                                  style: AppTextStyles.fontGray14Medium.copyWith(
+                                    fontSize: 13.sp,
+                                    color: AppColors.grayText.withValues(
+                                      alpha: 0.7,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    verticalSpacing(20),
-                    Icon(
-                      Icons.shopping_bag_outlined,
-                      size: 70.sp,
-                      color: AppColors.blue,
-                    ),
-                    verticalSpacing(15),
-                    Text(
-                      "Welcome Back",
-                      style: AppTextStyles.fontBlack24Bold.copyWith(
-                        fontSize: 26.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    verticalSpacing(8),
-                    Text(
-                      "Sign in to continue your shopping journey",
-                      style: AppTextStyles.fontGray14Regular.copyWith(
-                        color: AppColors.grayText.withValues(alpha: 0.6),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    verticalSpacing(30),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Email Address",
-                        style: AppTextStyles.fontBlack14SemiBold.copyWith(
-                          fontSize: 14.sp,
+                        verticalSpacing(20),
+                        Icon(
+                          Icons.shopping_bag_outlined,
+                          size: 70.sp,
+                          color: AppColors.blue,
                         ),
-                      ),
-                    ),
-
-                    verticalSpacing(10),
-
-                    AppTextFormField(
-                      controller: emailController,
-                      inputType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      hintText: AppConstants.emailExample,
-                      prefixIcon: Icon(
-                        Icons.email_outlined,
-                        size: 20.sp,
-                        color: AppColors.grayText.withValues(alpha: 0.6),
-                      ),
-                      validator: Validators.validateEmail,
-                    ),
-
-                    verticalSpacing(20),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                        verticalSpacing(15),
                         Text(
-                          "Password",
-                          style: AppTextStyles.fontBlack14SemiBold.copyWith(
-                            fontSize: 14.sp,
+                          "Welcome Back",
+                          style: AppTextStyles.fontBlack24Bold.copyWith(
+                            fontSize: 26.sp,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            "Forgot?",
-                            style: AppTextStyles.fontBlue14Medium.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    verticalSpacing(10),
-
-                    AppTextFormField(
-                      controller: passwordController,
-                      inputType: TextInputType.text,
-                      textInputAction: TextInputAction.done,
-                      hintText: AppConstants.logInPasswordExample,
-                      isObscureText: isObscure,
-                      prefixIcon: Icon(
-                        Icons.lock_outline_rounded,
-                        size: 20.sp,
-                        color: AppColors.grayText.withValues(alpha: 0.6),
-                      ),
-                      validator: Validators.validatePassword,
-                      suffixIcon: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            isObscure = !isObscure;
-                          });
-                        },
-                        child: Icon(
-                          isObscure
-                              ? Icons.visibility_off_outlined
-                              : Icons.visibility_outlined,
-                          size: 20.sp,
-                          color: AppColors.grayText.withValues(alpha: 0.6),
-                        ),
-                      ),
-                    ),
-                    verticalSpacing(38),
-                    AppTextButton(
-                      buttonText: "Login",
-                      borderRadius: 25.r,
-                      textStyle: AppTextStyles.fontWhite16Bold,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
-                      },
-                    ),
-                    verticalSpacing(35),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.borderGray.withValues(alpha: 0.5),
-                            thickness: 1,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 12.w),
-                          child: Text(
-                            "OR CONTINUE WITH",
-                            style: AppTextStyles.fontBlue11Bold.copyWith(
-                              fontSize: 11.sp,
-                              letterSpacing: 0.6,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: AppColors.borderGray.withValues(alpha: 0.5),
-                            thickness: 1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    verticalSpacing(25),
-
-                    SocialButtonsRow(),
-
-                    verticalSpacing(15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                        verticalSpacing(8),
                         Text(
-                          "Don't have an account? ",
-                          style: AppTextStyles.fontGray14Medium.copyWith(
-                            color: AppColors.grayText.withValues(alpha: 0.8),
+                          "Sign in to continue your shopping journey",
+                          style: AppTextStyles.fontGray14Regular.copyWith(
+                            color: AppColors.grayText.withValues(alpha: 0.6),
                           ),
+                          textAlign: TextAlign.center,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            context.pushNamed(RouteNames.signUp, null);
-                          },
+                        verticalSpacing(30),
+                        Align(
+                          alignment: Alignment.centerLeft,
                           child: Text(
-                            "Sign Up",
-                            style: AppTextStyles.fontBlue14Medium.copyWith(
-                              fontWeight: FontWeight.bold,
+                            "Email Address",
+                            style: AppTextStyles.fontBlack14SemiBold.copyWith(
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
+
+                        verticalSpacing(10),
+
+                        AppTextFormField(
+                          controller: emailController,
+                          inputType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          hintText: AppConstants.emailExample,
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            size: 20.sp,
+                            color: AppColors.grayText.withValues(alpha: 0.6),
+                          ),
+                          validator: Validators.validateEmail,
+                        ),
+
+                        verticalSpacing(20),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Password",
+                              style: AppTextStyles.fontBlack14SemiBold.copyWith(
+                                fontSize: 14.sp,
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                "Forgot?",
+                                style: AppTextStyles.fontBlue14Medium.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        verticalSpacing(10),
+
+                        AppTextFormField(
+                          controller: passwordController,
+                          inputType: TextInputType.text,
+                          textInputAction: TextInputAction.done,
+                          hintText: AppConstants.logInPasswordExample,
+                          isObscureText: isObscure,
+                          prefixIcon: Icon(
+                            Icons.lock_outline_rounded,
+                            size: 20.sp,
+                            color: AppColors.grayText.withValues(alpha: 0.6),
+                          ),
+                          validator: Validators.validatePassword,
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isObscure = !isObscure;
+                              });
+                            },
+                            child: Icon(
+                              isObscure
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              size: 20.sp,
+                              color: AppColors.grayText.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ),
+                        verticalSpacing(38),
+                        state is AuthLoading
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.blue,
+                                ),
+                              )
+                            : AppTextButton(
+                                buttonText: "Login",
+                                borderRadius: 25.r,
+                                textStyle: AppTextStyles.fontWhite16Bold,
+                                onPressed: () {
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<AuthCubit>().login(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                        );
+                                  }
+                                },
+                              ),
+                        verticalSpacing(35),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: AppColors.borderGray.withValues(
+                                  alpha: 0.5,
+                                ),
+                                thickness: 1,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 12.w),
+                              child: Text(
+                                "OR CONTINUE WITH",
+                                style: AppTextStyles.fontBlue11Bold.copyWith(
+                                  fontSize: 11.sp,
+                                  letterSpacing: 0.6,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: AppColors.borderGray.withValues(
+                                  alpha: 0.5,
+                                ),
+                                thickness: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                        verticalSpacing(25),
+
+                        SocialButtonsRow(),
+
+                        verticalSpacing(15),
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Don't have an account? ",
+                                style: AppTextStyles.fontGray14Medium.copyWith(
+                                  color: AppColors.grayText.withValues(alpha: 0.8),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  context.pushNamed(RouteNames.signUp, null);
+                                },
+                                child: Text(
+                                  "Sign Up",
+                                  style: AppTextStyles.fontBlue14Medium.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        verticalSpacing(10),
                       ],
                     ),
-                    verticalSpacing(10),
-                  ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

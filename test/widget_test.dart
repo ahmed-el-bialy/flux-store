@@ -1,32 +1,35 @@
-// This is a basic Flutter widget test.
+// Basic smoke test for the Flux Store app.
 //
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// Verifies that the application can build and render without crashing.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flux_store/core/helper/shared_prefs_helper.dart';
 import 'package:flux_store/core/routing/app_router.dart';
 import 'package:flux_store/main.dart';
-
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(VibrantStoreApp(appRouter: AppRouter(),));
+  testWidgets('App builds and renders correctly', (WidgetTester tester) async {
+    // Set up mock SharedPreferences before building the app
+    SharedPreferences.setMockInitialValues({});
+    await SharedPrefsHelper.init();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Set a realistic phone screen size to avoid layout overflows
+    tester.view.physicalSize = const Size(360, 690);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Build the app with guest mode (not logged in)
+    await tester.pumpWidget(
+      VibrantStoreApp(appRouter: AppRouter(), isLoggedIn: false),
+    );
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Let ScreenUtilInit complete its async setup
+    await tester.pumpAndSettle();
+
+    // Verify the app renders without errors
+    expect(find.byType(VibrantStoreApp), findsOneWidget);
   });
 }

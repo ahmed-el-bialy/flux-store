@@ -228,25 +228,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SocialButtonsRow(),
 
                         verticalSpacing(20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Already have an account? ",
-                              style: AppTextStyles.fontGray14Medium,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                "Login",
-                                style: AppTextStyles.fontBlue14Medium.copyWith(
-                                  fontWeight: FontWeight.bold,
+                        FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Already have an account? ",
+                                style: AppTextStyles.fontGray14Medium,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Login",
+                                  style: AppTextStyles.fontBlue14Medium.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         verticalSpacing(10),
                       ],

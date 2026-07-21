@@ -4,7 +4,6 @@ import 'package:flux_store/core/networking/dio_factory.dart';
 import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/features/auth/ui/log_in_screen.dart';
 import 'package:flux_store/features/auth/ui/sign_up_screen.dart';
-import 'package:flux_store/features/profile/ui/profile_screen.dart';
 import 'package:flux_store/features/categories/ui/screens/categories_screen.dart';
 import 'package:flux_store/features/categories/ui/screens/category_products_screen.dart';
 import 'package:flux_store/features/details/data/repo/details_repo.dart';
@@ -13,6 +12,7 @@ import 'package:flux_store/features/details/logic/product_details_cubit.dart';
 import 'package:flux_store/features/details/ui/details_screen.dart';
 import 'package:flux_store/features/home/data/repo/home_repo.dart';
 import 'package:flux_store/features/home/data/web_services/home_web_services.dart';
+import 'package:flux_store/features/profile/ui/profile_screen.dart';
 
 import '../../features/categories/data/repo/categories_repo.dart';
 import '../../features/categories/data/web_services/categories_web_services.dart';
