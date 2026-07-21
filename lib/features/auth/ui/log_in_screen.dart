@@ -5,6 +5,7 @@ import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
 
+import '../../../core/constants/app_constants.dart';
 import '../../../core/helper/routing_extension.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/helper/validators.dart';
@@ -107,12 +108,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                       ),
                     ),
+
                     verticalSpacing(10),
+
                     AppTextFormField(
                       controller: emailController,
                       inputType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
-                      hintText: "fluxstore@example.com",
+                      hintText: AppConstants.emailExample,
                       prefixIcon: Icon(
                         Icons.email_outlined,
                         size: 20.sp,
@@ -120,7 +123,9 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                       validator: Validators.validateEmail,
                     ),
+
                     verticalSpacing(20),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -141,12 +146,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                       ],
                     ),
+
                     verticalSpacing(10),
+
                     AppTextFormField(
                       controller: passwordController,
                       inputType: TextInputType.text,
                       textInputAction: TextInputAction.done,
-                      hintText: "********",
+                      hintText: AppConstants.passwordExample,
                       isObscureText: isObscure,
                       prefixIcon: Icon(
                         Icons.lock_outline_rounded,

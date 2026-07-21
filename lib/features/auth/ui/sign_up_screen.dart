@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/features/auth/ui/widgets/social_buttons_row.dart';
@@ -73,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpacing(8),
                     AppTextFormField(
                       controller: emailController,
-                      hintText: "fluxstore@example.com",
+                      hintText: AppConstants.emailExample,
                       prefixIcon: Icon(
                         Icons.email_outlined,
                         size: 22.sp,
@@ -92,7 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     verticalSpacing(8),
                     AppTextFormField(
                       controller: passwordController,
-                      hintText: "********",
+                      hintText: AppConstants.passwordExample,
                       isObscureText: isObscure,
                       prefixIcon: Icon(
                         Icons.lock_outline_rounded,
@@ -125,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     verticalSpacing(8),
                     AppTextFormField(
-                      hintText: "********",
+                      hintText: AppConstants.passwordExample,
                       isObscureText: isConfirmObscure,
                       prefixIcon: Icon(
                         Icons.lock_clock_outlined,
