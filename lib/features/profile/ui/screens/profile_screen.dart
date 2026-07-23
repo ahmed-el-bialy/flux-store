@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
-import 'package:flux_store/core/widgets/app_navigation_bar.dart';
 import 'package:flux_store/features/auth/logic/auth_cubit.dart';
 import 'package:flux_store/features/profile/ui/screens/authenticated_view.dart';
 import 'package:flux_store/features/profile/ui/screens/guest_view.dart';

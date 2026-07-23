@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
 import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
-import 'package:flux_store/core/widgets/app_navigation_bar.dart';
 import 'package:flux_store/core/widgets/app_text_form_field.dart';
 import 'package:flux_store/features/categories/data/local/categories_data.dart';
 

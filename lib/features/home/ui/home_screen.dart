@@ -17,7 +17,6 @@ import 'package:flux_store/features/search/ui/custom_search_delegate.dart';
 import 'package:flux_store/features/wishlist/logic/wishlist_cubit.dart';
 
 import '../../../core/helper/spacing.dart';
-import '../../../core/widgets/app_navigation_bar.dart';
 import '../../../core/widgets/loading_products_sliver_grid_view.dart';
 import '../../../core/widgets/products_sliver_grid_view.dart';
 import '../../search/logic/search_cubit.dart';

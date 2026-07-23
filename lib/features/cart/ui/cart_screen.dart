@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/app_text_styles.dart';
-import '../../../core/widgets/app_navigation_bar.dart';
 import '../logic/cart_cubit.dart';
 import 'widgets/cart_empty_state.dart';
 import 'widgets/cart_item_card.dart';
