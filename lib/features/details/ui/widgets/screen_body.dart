@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/helper/spacing.dart';
 import 'package:flux_store/features/details/ui/widgets/product_image.dart';
@@ -7,6 +8,7 @@ import 'package:flux_store/features/home/data/models/product_model.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
+import '../../../wishlist/logic/wishlist_cubit.dart';
 import 'reviews_list.dart';
 
 class ScreenBody extends StatelessWidget {
@@ -37,29 +39,42 @@ class ScreenBody extends StatelessWidget {
           snap: true,
           automaticallyImplyLeading: true,
           actions: [
-            Container(
-              margin: EdgeInsets.only(right: 16.w),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.black.withValues(alpha: 0.15),
-                    blurRadius: 10.r,
-                    offset: const Offset(0, 4),
+            BlocBuilder<WishlistCubit, WishlistState>(
+              builder: (context, state) {
+                final isFav = context.watch<WishlistCubit>().isFavorite(product.id);
+                return Container(
+                  margin: EdgeInsets.only(right: 16.w),
+                  decoration: BoxDecoration(
+                    color: AppColors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.black.withValues(alpha: 0.15),
+                        blurRadius: 10.r,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: IconButton(
-                icon: Icon(
-                  Icons.favorite_border_outlined,
-                  color: AppColors.blue,
-                  size: 18.sp,
-                ),
-                onPressed: () {
-                  /// TODO Implement favorite
-                },
-              ),
+                  child: IconButton(
+                    icon: Icon(
+                      isFav ? Icons.favorite : Icons.favorite_border_outlined,
+                      color: isFav ? AppColors.redFavorite : AppColors.blue,
+                      size: 20.sp,
+                    ),
+                    onPressed: () {
+                      context.read<WishlistCubit>().toggleFavorite(product);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            isFav ? "Removed from Wishlist" : "Added to Wishlist",
+                          ),
+                          duration: const Duration(seconds: 1),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/constants/app_constants.dart';
+import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/networking/dio_factory.dart';
+import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/theming/app_colors.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/core/widgets/section_title.dart';
@@ -12,6 +14,7 @@ import 'package:flux_store/features/home/ui/widgets/category_item.dart';
 import 'package:flux_store/features/search/data/repo/search_repo.dart';
 import 'package:flux_store/features/search/data/web_services/search_web_services.dart';
 import 'package:flux_store/features/search/ui/custom_search_delegate.dart';
+import 'package:flux_store/features/wishlist/logic/wishlist_cubit.dart';
 
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/app_navigation_bar.dart';
@@ -38,8 +41,48 @@ class HomeScreen extends StatelessWidget {
             elevation: 0,
             pinned: true,
             actions: [
+              BlocBuilder<WishlistCubit, WishlistState>(
+                builder: (context, state) {
+                  final favCount = context.watch<WishlistCubit>().wishlistItems.length;
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          context.pushNamed(RouteNames.wishlist, null);
+                        },
+                        icon: Icon(
+                          Icons.favorite_border_rounded,
+                          size: 24.sp,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                      if (favCount > 0)
+                        Positioned(
+                          top: 8.h,
+                          right: 8.w,
+                          child: Container(
+                            padding: EdgeInsets.all(4.r),
+                            decoration: const BoxDecoration(
+                              color: AppColors.redFavorite,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Text(
+                              '$favCount',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 9.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                padding: EdgeInsets.only(right: 8.w),
                 child: IconButton(
                   onPressed: () {
                     final searchCubit = SearchCubit(searchRepo: SearchRepo(
@@ -48,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                         delegate: CustomSearchDelegate(
                             searchCubit: searchCubit));
                   },
-                  icon: Icon(Icons.search, size: 24.sp),
+                  icon: Icon(Icons.search, size: 24.sp, color: AppColors.blue),
                 ),
               ),
             ],
@@ -102,8 +145,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
 
-      bottomNavigationBar: AppNavigationBar(activeIndex: 0),
+      bottomNavigationBar: const AppNavigationBar(activeIndex: 0),
     );
   }
 }
-
