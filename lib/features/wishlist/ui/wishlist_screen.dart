@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../core/helper/routing_extension.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/routing/route_names.dart';
@@ -24,7 +25,11 @@ class WishlistScreen extends StatelessWidget {
         backgroundColor: AppColors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, size: 20.sp, color: AppColors.black),
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            size: 20.sp,
+            color: AppColors.black,
+          ),
           onPressed: () => context.pop(),
         ),
         title: Text(
@@ -132,7 +137,11 @@ class WishlistScreen extends StatelessWidget {
                     placeholder: (context, url) => const ImagePlaceHolder(),
                     errorWidget: (context, url, error) => Container(
                       color: Colors.grey.shade200,
-                      child: Icon(Icons.shopping_bag_outlined, color: AppColors.grayText, size: 28.sp),
+                      child: Icon(
+                        Icons.shopping_bag_outlined,
+                        color: AppColors.grayText,
+                        size: 28.sp,
+                      ),
                     ),
                   ),
                 ),
@@ -151,7 +160,9 @@ class WishlistScreen extends StatelessWidget {
                     verticalSpacing(6),
                     Text(
                       "\$${product.price}",
-                      style: AppTextStyles.fontBlue23Bold.copyWith(fontSize: 16.sp),
+                      style: AppTextStyles.fontBlue23Bold.copyWith(
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ],
                 ),
@@ -159,7 +170,11 @@ class WishlistScreen extends StatelessWidget {
               Column(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.favorite, color: AppColors.redFavorite, size: 22.sp),
+                    icon: Icon(
+                      Icons.favorite,
+                      color: AppColors.redFavorite,
+                      size: 22.sp,
+                    ),
                     onPressed: () {
                       context.read<WishlistCubit>().toggleFavorite(product);
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -171,7 +186,11 @@ class WishlistScreen extends StatelessWidget {
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.add_shopping_cart, color: AppColors.blue, size: 20.sp),
+                    icon: Icon(
+                      Icons.add_shopping_cart,
+                      color: AppColors.blue,
+                      size: 20.sp,
+                    ),
                     onPressed: () {
                       context.read<CartCubit>().addToCart(product);
                       ScaffoldMessenger.of(context).showSnackBar(
