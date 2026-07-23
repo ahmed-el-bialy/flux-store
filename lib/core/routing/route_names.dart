@@ -6,4 +6,7 @@ abstract class RouteNames {
   static const categories = "/categories";
   static const categoryProducts = "/categoryProducts";
   static const profile = "/profile";
+  static const cart = "/cart";
+  static const wishlist = "/wishlist";
 }
+
