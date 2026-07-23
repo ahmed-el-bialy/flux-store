@@ -30,7 +30,7 @@ class _AuthenticatedViewState extends State<AuthenticatedView> {
           children: [
             verticalSpacing(20),
 
-            // ── Header ──
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Row(

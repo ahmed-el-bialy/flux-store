@@ -102,7 +102,7 @@ class SharedPrefsHelper {
     }
   }
 
-  // ─── Wishlist & Cart Storage ──────────────────────────────────────
+
 
   static Future<void> saveWishlist(List<Map<String, dynamic>> wishlistJson) async {
     await _sharedPreferences?.setString(_keyWishlist, jsonEncode(wishlistJson));
