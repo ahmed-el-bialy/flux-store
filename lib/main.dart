@@ -6,6 +6,8 @@ import 'package:flux_store/core/networking/dio_factory.dart';
 import 'package:flux_store/features/auth/data/repo/auth_repo.dart';
 import 'package:flux_store/features/auth/data/web_services/auth_api_service.dart';
 import 'package:flux_store/features/auth/logic/auth_cubit.dart';
+import 'package:flux_store/features/cart/logic/cart_cubit.dart';
+import 'package:flux_store/features/wishlist/logic/wishlist_cubit.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/route_names.dart';
@@ -29,10 +31,20 @@ class VibrantStoreApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          AuthCubit(authRepo: AuthRepo(AuthApiService(DioFactory.getDio())))
-            ..checkSession(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(
+          create: (context) =>
+              AuthCubit(authRepo: AuthRepo(AuthApiService(DioFactory.getDio())))
+                ..checkSession(),
+        ),
+        BlocProvider<CartCubit>(
+          create: (context) => CartCubit(),
+        ),
+        BlocProvider<WishlistCubit>(
+          create: (context) => WishlistCubit(),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,

@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
+import '../../../cart/logic/cart_cubit.dart';
+import '../../../home/data/models/product_model.dart';
 
 class StickyBottomCTA extends StatelessWidget {
-  const StickyBottomCTA({super.key, required this.stock});
+  const StickyBottomCTA({
+    super.key,
+    required this.stock,
+    this.product,
+  });
 
   final int stock;
+  final ProductModel? product;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,6 @@ class StickyBottomCTA extends StatelessWidget {
           ),
         ],
       ),
-
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -40,18 +46,24 @@ class StickyBottomCTA extends StatelessWidget {
               height: 48.h,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: outOfStock
-                      ? AppColors.disabledBg
-                      : AppColors.black,
+                  backgroundColor:
+                      outOfStock ? AppColors.disabledBg : AppColors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.r),
                   ),
                   elevation: 0,
                 ),
-                onPressed: outOfStock
+                onPressed: outOfStock || product == null
                     ? null
                     : () {
-                        // TODO implement add to cart
+                        context.read<CartCubit>().addToCart(product!);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("${product!.title} added to Cart!"),
+                            backgroundColor: Colors.green,
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
                       },
                 child: Text(
                   outOfStock ? "OUT OF STOCK" : "ADD TO CART",

@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
 import 'package:flux_store/core/routing/route_names.dart';
 import 'package:flux_store/core/theming/app_text_styles.dart';
 import 'package:flux_store/features/home/data/models/product_model.dart';
-
+import '../../features/cart/logic/cart_cubit.dart';
+import '../../features/wishlist/logic/wishlist_cubit.dart';
 import '../theming/app_colors.dart';
 import 'image_place_holder.dart';
 
@@ -57,23 +59,36 @@ class ProductCard extends StatelessWidget {
                     Positioned(
                       top: 3.h,
                       right: 1.w,
-                      child: Card(
-                        elevation: 2,
-                        clipBehavior: Clip.antiAlias,
-                        shape: const CircleBorder(),
-                        child: InkWell(
-                          onTap: () {
-                            /// TODO: implement favorite functionality
-                          },
-                          child: Padding(
-                            padding: EdgeInsets.all(8.r),
-                            child: Icon(
-                              Icons.favorite_border_outlined,
-                              size: 18.sp,
-                              color: AppColors.blue,
+                      child: BlocBuilder<WishlistCubit, WishlistState>(
+                        builder: (context, state) {
+                          final isFav = context.watch<WishlistCubit>().isFavorite(model.id);
+                          return Card(
+                            elevation: 2,
+                            clipBehavior: Clip.antiAlias,
+                            shape: const CircleBorder(),
+                            child: InkWell(
+                              onTap: () {
+                                context.read<WishlistCubit>().toggleFavorite(model);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      isFav ? "Removed from Wishlist" : "Added to Wishlist",
+                                    ),
+                                    duration: const Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(8.r),
+                                child: Icon(
+                                  isFav ? Icons.favorite : Icons.favorite_border_outlined,
+                                  size: 18.sp,
+                                  color: isFav ? AppColors.redFavorite : AppColors.blue,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                       ),
                     ),
                     Positioned(
@@ -147,7 +162,14 @@ class ProductCard extends StatelessWidget {
                       shape: const CircleBorder(),
                       child: InkWell(
                         onTap: () {
-                          /// TODO: implement add_to_cart functionality
+                          context.read<CartCubit>().addToCart(model);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("${model.title} added to Cart!"),
+                              backgroundColor: Colors.green,
+                              duration: const Duration(seconds: 2),
+                            ),
+                          );
                         },
                         child: Padding(
                           padding: EdgeInsets.all(8.r),

@@ -27,7 +27,10 @@ class DetailsScreen extends StatelessWidget {
             extendBody: true,
             backgroundColor: AppColors.white,
             body: ScreenBody(product: state.product),
-            bottomNavigationBar: StickyBottomCTA(stock: stockCount),
+            bottomNavigationBar: StickyBottomCTA(
+              stock: stockCount,
+              product: state.product,
+            ),
           );
         }
 

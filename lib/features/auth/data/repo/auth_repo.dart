@@ -35,7 +35,10 @@ class AuthRepo {
     }
 
     // 2. Query DummyJSON by email to map to their username
-    final apiUsers = await apiService.searchUserByEmail(cleanEmail);
+    final httpResponse = await apiService.searchUserByEmail(email: cleanEmail);
+    final responseData = httpResponse.data as Map<String, dynamic>;
+    final List<dynamic> apiUsers = responseData['users'] ?? [];
+
     if (apiUsers.isEmpty) {
       throw Exception('No user found with this email.');
     }
@@ -82,13 +85,15 @@ class AuthRepo {
     const String lastName = 'User';
 
     // Call DummyJSON register simulator
-    final responseData = await apiService.register(
+    final httpResponse = await apiService.register(
       email: cleanEmail,
       password: password,
       username: username,
       firstName: firstName,
       lastName: lastName,
     );
+
+    final responseData = httpResponse.data as Map<String, dynamic>;
 
     // Prepare profile fields with fallback values
     final userDetails = {

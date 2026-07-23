@@ -13,6 +13,8 @@ class SharedPrefsHelper {
   static const String _keyUser = 'auth_user';
   static const String _keyLocalUsers = 'local_users';
   static const String _keySocialUsers = 'social_users';
+  static const String _keyWishlist = 'user_wishlist';
+  static const String _keyCart = 'user_cart';
 
   static Future<void> saveToken(String token) async {
     await _sharedPreferences?.setString(_keyToken, token);
@@ -97,6 +99,38 @@ class SharedPrefsHelper {
       return jsonDecode(jsonStr) as Map<String, dynamic>;
     } catch (_) {
       return {};
+    }
+  }
+
+  // ─── Wishlist & Cart Storage ──────────────────────────────────────
+
+  static Future<void> saveWishlist(List<Map<String, dynamic>> wishlistJson) async {
+    await _sharedPreferences?.setString(_keyWishlist, jsonEncode(wishlistJson));
+  }
+
+  static List<Map<String, dynamic>> getWishlist() {
+    final str = _sharedPreferences?.getString(_keyWishlist);
+    if (str == null) return [];
+    try {
+      final List<dynamic> decoded = jsonDecode(str);
+      return decoded.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    } catch (_) {
+      return [];
+    }
+  }
+
+  static Future<void> saveCart(List<Map<String, dynamic>> cartJson) async {
+    await _sharedPreferences?.setString(_keyCart, jsonEncode(cartJson));
+  }
+
+  static List<Map<String, dynamic>> getCart() {
+    final str = _sharedPreferences?.getString(_keyCart);
+    if (str == null) return [];
+    try {
+      final List<dynamic> decoded = jsonDecode(str);
+      return decoded.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+    } catch (_) {
+      return [];
     }
   }
 }
