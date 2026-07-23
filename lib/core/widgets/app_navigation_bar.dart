@@ -125,6 +125,7 @@ class AppNavigationBar extends StatelessWidget {
                         isSelected: isSelected,
                         activeColor: activeCol,
                         inactiveColor: inactiveCol,
+                        onItemTapped: onItemTapped,
                       );
                     }),
                   ),

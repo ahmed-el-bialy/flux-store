@@ -19,21 +19,13 @@ import 'package:flux_store/features/wishlist/ui/wishlist_screen.dart';
 import '../../features/categories/data/repo/categories_repo.dart';
 import '../../features/categories/data/web_services/categories_web_services.dart';
 import '../../features/categories/logic/products_by_category_cubit.dart';
-import '../../features/home/logic/get_all_products_cubit.dart';
-import '../../features/home/ui/home_screen.dart';
+import '../../features/main_layout/ui/main_layout_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings setting) {
     switch (setting.name) {
       case RouteNames.home:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => GetAllProductsCubit(
-              homeRepo: HomeRepo(HomeWebServices(DioFactory.getDio())),
-            )..getAllProducts(),
-            child: const HomeScreen(),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => const MainLayoutScreen());
 
       case RouteNames.details:
         final arguments = setting.arguments as int;
@@ -78,7 +70,7 @@ class AppRouter {
         );
 
       default:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainLayoutScreen());
     }
   }
 }

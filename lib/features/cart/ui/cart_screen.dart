@@ -60,7 +60,6 @@ class CartScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-          bottomNavigationBar: const AppNavigationBar(activeIndex: 2),
         );
       },
     );

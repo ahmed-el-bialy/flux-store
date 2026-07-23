@@ -110,7 +110,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           sliverVerticalSpacing(70),
         ],
       ),
-      bottomNavigationBar: AppNavigationBar(activeIndex: 1),
     );
   }
 }

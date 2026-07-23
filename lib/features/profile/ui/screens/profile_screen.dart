@@ -35,7 +35,6 @@ class ProfileScreen extends StatelessWidget {
           body: state is AuthSuccess
               ? AuthenticatedView(state: state)
               : GuestView(),
-          bottomNavigationBar: const AppNavigationBar(activeIndex: 3),
         );
       },
     );

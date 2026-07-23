@@ -144,8 +144,6 @@ class HomeScreen extends StatelessWidget {
           sliverVerticalSpacing(65),
         ],
       ),
-
-      bottomNavigationBar: const AppNavigationBar(activeIndex: 0),
     );
   }
 }

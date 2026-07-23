@@ -10,7 +10,7 @@ import '../../../../core/theming/app_text_styles.dart';
 import '../../../../core/widgets/image_place_holder.dart';
 import '../../../cart/logic/cart_cubit.dart';
 import '../../../home/data/models/product_model.dart';
-import '../logic/wishlist_cubit.dart';
+import '../../logic/wishlist_cubit.dart';
 
 class WishlistItemCard extends StatelessWidget {
   final ProductModel product;
