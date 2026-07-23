@@ -9,6 +9,7 @@ import 'package:flux_store/features/auth/logic/auth_cubit.dart';
 import 'package:flux_store/features/profile/ui/widgets/avatar_card.dart';
 import 'package:flux_store/features/profile/ui/widgets/logout_confirmation.dart';
 import 'package:flux_store/features/profile/ui/widgets/settings_section.dart';
+import 'package:flux_store/features/main_layout/ui/main_layout_screen.dart';
 
 class AuthenticatedView extends StatefulWidget {
   const AuthenticatedView({super.key, required this.state});
@@ -35,6 +36,11 @@ class _AuthenticatedViewState extends State<AuthenticatedView> {
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Row(
                 children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back_ios_new, size: 20.sp, color: AppColors.black),
+                    onPressed: () => MainLayoutScreen.switchTab(context, 0),
+                  ),
+                  horizontalSpacing(8),
                   Text(
                     "My Profile",
                     style: AppTextStyles.fontBlack24Bold.copyWith(

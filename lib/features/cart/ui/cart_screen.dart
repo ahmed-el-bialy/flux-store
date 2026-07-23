@@ -5,6 +5,7 @@ import '../../../core/helper/spacing.dart';
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/app_text_styles.dart';
 import '../logic/cart_cubit.dart';
+import '../../main_layout/ui/main_layout_screen.dart';
 import 'widgets/cart_empty_state.dart';
 import 'widgets/cart_item_card.dart';
 import 'widgets/cart_summary.dart';
@@ -30,6 +31,10 @@ class CartScreen extends StatelessWidget {
               style: AppTextStyles.fontBlack24Bold.copyWith(fontSize: 20.sp),
             ),
             centerTitle: true,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_new, size: 20.sp, color: AppColors.black),
+              onPressed: () => MainLayoutScreen.switchTab(context, 0),
+            ),
             actions: [
               if (items.isNotEmpty)
                 IconButton(

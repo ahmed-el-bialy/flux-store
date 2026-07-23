@@ -14,6 +14,11 @@ import '../../profile/ui/screens/profile_screen.dart';
 class MainLayoutScreen extends StatefulWidget {
   const MainLayoutScreen({super.key});
 
+  static void switchTab(BuildContext context, int index) {
+    final state = context.findAncestorStateOfType<_MainLayoutScreenState>();
+    state?.switchTab(index);
+  }
+
   @override
   State<MainLayoutScreen> createState() => _MainLayoutScreenState();
 }
@@ -37,6 +42,14 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
       const CartScreen(),
       const ProfileScreen(),
     ];
+  }
+
+  void switchTab(int index) {
+    if (mounted) {
+      setState(() {
+        _currentIndex = index;
+      });
+    }
   }
 
   @override

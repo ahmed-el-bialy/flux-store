@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/core/constants/app_constants.dart';
-import 'package:flux_store/core/helper/routing_extension.dart';
 import 'package:flux_store/core/helper/spacing.dart';
 import 'package:flux_store/core/widgets/app_text_form_field.dart';
 import 'package:flux_store/features/categories/data/local/categories_data.dart';
+import 'package:flux_store/features/main_layout/ui/main_layout_screen.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
@@ -38,7 +37,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             floating: true,
             leading: IconButton(
               onPressed: () {
-                context.pop();
+                MainLayoutScreen.switchTab(context, 0);
               },
               icon: const Icon(Icons.arrow_back_rounded),
             ),
